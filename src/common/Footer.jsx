@@ -8,7 +8,7 @@ const Footer = () => {
   console.log(getYear);
   return (
     <footer className="bg-[#101010] text-white relative">
-      <div className="container mx-auto flex flex-col items-center md:items-start justify-center md:justify-start space-y-8 py-10 px-6">
+      <div className="container mx-auto flex flex-col items-center md:items-start justify-center md:justify-start space-y-8 pt-10 pb-4 px-6">
         <div className="md:flex md:flex-col lg:flex-row lg:justify-between lg:w-full md:items-start md:gap-6">
           <h3
             className=" font-bold text-2xl before:content-[''] before:absolute before:top-0 before:left-1/2 md:before:left-[200px] 
