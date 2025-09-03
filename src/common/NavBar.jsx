@@ -27,16 +27,16 @@ const NavBar = () => {
             </Link>
           </div>
           <div className="hidden md:flex space-x-6 text-sm font-700 md:items-center  ">
-            <Link to="#" className=" hover:text-[#D87D4A] uppercase">
+            <Link to="/" className=" hover:text-[#D87D4A] uppercase">
               Home
             </Link>
-            <Link to="#" className=" hover:text-[#D87D4A] uppercase">
+            <Link to="headphones" className=" hover:text-[#D87D4A] uppercase">
               Headphones
             </Link>
-            <Link to="#" className=" hover:text-[#D87D4A] uppercase">
+            <Link to="speakers" className=" hover:text-[#D87D4A] uppercase">
               Speaker
             </Link>
-            <Link to="#" className=" hover:text-[#D87D4A] uppercase">
+            <Link to="earphones" className=" hover:text-[#D87D4A] uppercase">
               Earphones
             </Link>
           </div>

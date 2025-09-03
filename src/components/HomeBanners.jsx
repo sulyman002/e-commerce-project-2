@@ -30,7 +30,7 @@ const HomeBanners = () => {
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </p>
-          <SellProductBtn className="bg-black text-white uppercase hover:bg-[#4C4C4C]">
+          <SellProductBtn className="bg-black lg:px-8 lg:py-5 text-white uppercase hover:bg-[#4C4C4C]">
             See Product
           </SellProductBtn>
         </div>

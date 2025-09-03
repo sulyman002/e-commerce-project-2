@@ -1,8 +1,11 @@
 import React from "react";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, Links } from "react-router-dom";
 
 const Footer = () => {
+  const facebookLink = "https://www.facebook.com/";
+  const twitterLink = "https://twitter.com/";
+  const instagramLink = "https://www.instagram.com/";
   const data = new Date();
   const getYear = data.getFullYear();
   console.log(getYear);
@@ -17,16 +20,16 @@ const Footer = () => {
             audiophile
           </h3>
           <nav className="flex flex-col md:flex-row md:space-x-6 text-center space-y-4 pt-4 lg:pt-0 text-[13px] font-bold">
-            <Link to="#" className=" hover:text-[#D87D4A] uppercase">
+            <Link to="/" className=" hover:text-[#D87D4A] uppercase">
               Home
             </Link>
-            <Link to="#" className=" hover:text-[#D87D4A] uppercase">
+            <Link to="headphones" className=" hover:text-[#D87D4A] uppercase">
               Headphones
             </Link>
-            <Link to="#" className=" hover:text-[#D87D4A] uppercase">
+            <Link to="speakers" className=" hover:text-[#D87D4A] uppercase">
               Speaker
             </Link>
-            <Link to="#" className=" hover:text-[#D87D4A] uppercase">
+            <Link to="earphones" className=" hover:text-[#D87D4A] uppercase">
               Earphones
             </Link>
           </nav>
@@ -40,21 +43,27 @@ const Footer = () => {
         </div>
         <div className="space-y-4 flex flex-col md:flex-row md:justify-between md:items-center w-full">
           <div className="py-5">
-            <p className="text-sm font-bold text-white/60">{`Copyright ${getYear}. All Rights Reserved`}</p>
+            <p className="text-sm text-center font-bold text-white/60">{`Copyright ${getYear}. All Rights Reserved`}</p>
           </div>
           <div className="flex items-center justify-center space-x-4 text-white lg:mb-12 ">
-            <FaFacebook
-              size={24}
-              className="hover:text-[#D87D4A] cursor-pointer"
-            />
-            <FaTwitter
-              size={24}
-              className="hover:text-[#D87D4A] cursor-pointer"
-            />
-            <FaInstagram
-              size={24}
-              className="hover:text-[#D87D4A] cursor-pointer"
-            />
+            <Link to={facebookLink}>
+              <FaFacebook
+                size={24}
+                className="hover:text-[#D87D4A] cursor-pointer"
+              />
+            </Link>
+            <Link to={twitterLink}>
+              <FaTwitter
+                size={24}
+                className="hover:text-[#D87D4A] cursor-pointer"
+              />
+            </Link>
+            <Link to={instagramLink}>
+              <FaInstagram
+                size={24}
+                className="hover:text-[#D87D4A] cursor-pointer"
+              />
+            </Link>
           </div>
         </div>
       </div>
