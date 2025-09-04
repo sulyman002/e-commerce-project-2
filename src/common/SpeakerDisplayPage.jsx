@@ -20,7 +20,7 @@ const SpeakerDisplayPage = () => {
 
   useEffect(() => {
     try {
-      fetch("../../public/speakers.json")
+      fetch("../../speakers.json")
         .then((res) => res.json())
         .then((data) => {
           const findId = data.find((item) => item.id === parseInt(id));

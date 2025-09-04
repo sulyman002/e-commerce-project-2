@@ -20,7 +20,7 @@ const EarphoneDisplayPage = () => {
 
   useEffect(() => {
     try {
-      fetch("../../public/earphones.json")
+      fetch("../../earphones.json")
         .then((res) => res.json())
         .then((data) => {
           const findId = data.find((item) => item.id === parseInt(id));

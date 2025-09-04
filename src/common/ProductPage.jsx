@@ -20,7 +20,7 @@ const ProductPage = () => {
 
   useEffect(() => {
     try {
-      fetch("../../public/products.json")
+      fetch("../../products.json")
         .then((res) => res.json())
         .then((data) => {
           const findId = data.find((item) => item.id === parseInt(id));
