@@ -13,7 +13,7 @@ const NavBar = () => {
   const [cartData, setCartData] = useState(null);
 
   useEffect(() => {
-    fetch("/public/earphones.json")
+    fetch("/earphones.json")
       .then((res) => res.json())
       .then((data) => {
         setCartData(data);
