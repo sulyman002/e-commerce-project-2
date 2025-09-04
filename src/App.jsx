@@ -1,12 +1,13 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import UserLayout from "./layouts/userLayout";
+
 import { Toaster } from "sonner";
 import Home from "./pages/Home";
 import HeadphonesCategory from "./pages/HeadphonesCategory";
 import EarphonesCategory from "./pages/EarphonesCategory";
 import SpeakersCategory from "./pages/SpeakersCategory";
 import ProductPage from "./common/ProductPage";
+import UserLayout from "./layouts/UUserLayout";
 
 function App() {
   return (
