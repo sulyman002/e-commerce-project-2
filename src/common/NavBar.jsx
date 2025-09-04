@@ -46,23 +46,44 @@ const NavBar = () => {
           </div>
         </nav>
         {/* mobile Nav Content */}
-        <div 
+        <div
           className={`fixed top-0 left-0 w-3/4 sm:w-1/2 md:w-1/3 
           h-full bg-black shadow-lg transform transition-transform duration-300 z-50 ${
             isNavOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          <div onClick={handleNav} className="flex justify-end p-4 mt-2">
+          <div onClick={handleNav} className="flex flex-col justify-end p-4 mt-2">
             <button className="">
               <IoMdClose className="h-6 w-6 text-white font-bold" />
             </button>
+
+            <nav>
+              <ul className="flex flex-col space-y-6 text-sm font-700 md:items-center mt-10 px-6">
+                <Link to="/" className=" hover:text-[#D87D4A] uppercase">
+                  Home
+                </Link>
+                <Link
+                  to="headphones"
+                  className=" hover:text-[#D87D4A] uppercase"
+                >
+                  Headphones
+                </Link>
+                <Link to="speakers" className=" hover:text-[#D87D4A] uppercase">
+                  Speaker
+                </Link>
+                <Link
+                  to="earphones"
+                  className=" hover:text-[#D87D4A] uppercase"
+                >
+                  Earphones
+                </Link>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
       {/* Show Hero Section */}
-      <div className="container mx-auto">
-        { showHero && <HeroSection /> }
-      </div>
+      <div className="container mx-auto">{showHero && <HeroSection />}</div>
     </div>
   );
 };
