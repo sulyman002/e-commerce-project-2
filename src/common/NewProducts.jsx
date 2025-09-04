@@ -17,7 +17,10 @@ const NewProducts = () => {
         <div className="flex flex-col items-center justify-center gap-2 mt-8">
           <h3 className="uppercase text-[15px]  ">Headphones</h3>
           <div
-            onClick={() => navigate("/headphones")}
+            onClick={() => {
+              navigate("/headphones");
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
             className="flex items-center gap-2"
           >
             <span className="text-[13px] text-black/40 ">SHOP</span>
@@ -33,7 +36,10 @@ const NewProducts = () => {
         <div className="flex flex-col items-center justify-center gap-2 mt-8">
           <h3 className="uppercase text-[15px]  ">Speakers</h3>
           <div
-            onClick={() => navigate("/speakers")}
+            onClick={() => {
+              navigate("/speakers");
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
             className="flex items-center gap-2"
           >
             <span className="text-[13px] text-black/40 ">SHOP</span>
@@ -49,7 +55,10 @@ const NewProducts = () => {
         <div className="flex flex-col items-center justify-center gap-2 mt-8">
           <h3 className="uppercase text-[15px]  ">Earphones</h3>
           <div
-            onClick={() => navigate("/earphones")}
+            onClick={() => {
+              navigate("/earphones");
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
             className="flex items-center gap-2"
           >
             <span className="text-[13px] text-black/40 ">SHOP</span>
