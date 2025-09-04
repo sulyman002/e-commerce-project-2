@@ -3,9 +3,11 @@ import CategoriesHeader from "../components/CategoriesHeader";
 import NewProducts from "../common/NewProducts";
 import HomeBringing from "../components/HomeBringing";
 import SellProductBtn from "../components/SellProductBtn";
+import { useNavigate } from "react-router-dom";
 
 const SpeakersCategory = () => {
   const [speakers, setSpeakers] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     try {
@@ -51,7 +53,7 @@ const SpeakersCategory = () => {
                 <p className="text-sm text-black/70 px-4 lg:px-0 text-center lg:text-start">
                   {speaker.description}
                 </p>
-               <SellProductBtn className="lg:py-5 lg:px-8 mt-8">see product</SellProductBtn>
+               <SellProductBtn onClick={() => navigate(`/speaker/${speaker.id}`)} className="lg:py-5 lg:px-8 mt-8">see product</SellProductBtn>
               </div>
             </div>
           ))}

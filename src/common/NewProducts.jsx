@@ -1,11 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import headphone from "../assets/desktop_home/headphones.png";
 import speakers from "../assets/desktop_home/speakers.png";
 import earphones from "../assets/desktop_home/earphones.png";
 import arrow from "../assets/desktop_home/arr_left.svg";
 
 const NewProducts = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="container py-12 px-6 grid grid-cols-1 md:grid-cols-3 mx-auto gap-6">
       <div className="relative flex-col h-[165px] bg-[#F1F1F1] flex items-center justify-center my-10">
@@ -14,10 +16,13 @@ const NewProducts = () => {
         </div>
         <div className="flex flex-col items-center justify-center gap-2 mt-8">
           <h3 className="uppercase text-[15px]  ">Headphones</h3>
-          <Link to="headphones" className="flex items-center gap-2">
+          <div
+            onClick={() => navigate("/headphones")}
+            className="flex items-center gap-2"
+          >
             <span className="text-[13px] text-black/40 ">SHOP</span>
             <img src={arrow} alt="arrow_right" />
-          </Link>
+          </div>
         </div>
       </div>
 
@@ -27,10 +32,13 @@ const NewProducts = () => {
         </div>
         <div className="flex flex-col items-center justify-center gap-2 mt-8">
           <h3 className="uppercase text-[15px]  ">Speakers</h3>
-          <Link to="speakers" className="flex items-center gap-2">
+          <div
+            onClick={() => navigate("/speakers")}
+            className="flex items-center gap-2"
+          >
             <span className="text-[13px] text-black/40 ">SHOP</span>
             <img src={arrow} alt="arrow_right" />
-          </Link>
+          </div>
         </div>
       </div>
 
@@ -40,10 +48,13 @@ const NewProducts = () => {
         </div>
         <div className="flex flex-col items-center justify-center gap-2 mt-8">
           <h3 className="uppercase text-[15px]  ">Earphones</h3>
-          <Link to="earphones" className="flex items-center gap-2">
+          <div
+            onClick={() => navigate("/earphones")}
+            className="flex items-center gap-2"
+          >
             <span className="text-[13px] text-black/40 ">SHOP</span>
             <img src={arrow} alt="arrow_right" />
-          </Link>
+          </div>
         </div>
       </div>
     </div>

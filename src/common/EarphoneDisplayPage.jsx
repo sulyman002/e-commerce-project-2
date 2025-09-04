@@ -4,9 +4,9 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import LikelyProduct from "./LikelyProduct";
 
-const ProductPage = () => {
+const EarphoneDisplayPage = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState({});
+  const [earphone, setEarphone] = useState({});
   const [count, setCount] = useState(1);
 
   function handleIncrement() {
@@ -20,11 +20,11 @@ const ProductPage = () => {
 
   useEffect(() => {
     try {
-      fetch("../../public/products.json")
+      fetch("../../public/earphones.json")
         .then((res) => res.json())
         .then((data) => {
           const findId = data.find((item) => item.id === parseInt(id));
-          setProduct(findId);
+          setEarphone(findId);
         });
     } catch (error) {
       console.error("Error fetching product:", error);
@@ -36,7 +36,7 @@ const ProductPage = () => {
       <section className="container mx-auto">
         <div className="py-8 px-6">
           <Link
-            to="../headphones"
+            to="../earphones"
             className="text-sm text-black-700 inline-block pb-4 lg:mt-8"
           >
             Go Back
@@ -44,26 +44,26 @@ const ProductPage = () => {
           <div className="flex flex-col md:flex-row gap-8 ">
             <div className="flex bg-[#F1F1F1] rounded-[8px] items-center justify-center py-12 md:py-18 lg:py-24 w-full lg:w-1/2">
               <img
-                src={product.image}
-                alt={product.title}
+                src={earphone.image}
+                alt={earphone.title}
                 className="h-[248px] md:h-[327px]"
               />
             </div>
 
             <div className="w-full lg:w-1/2 md:px-6 lg:px-0 lg:pr-10 flex h-auto flex-col items-start justify-center">
-              {product.new && (
+              {earphone.new && (
                 <p className="text-sm text-center text-[#D87D4A] tracking-[10px] mb-4">
                   NEW PRODUCT
                 </p>
               )}
               <h1 className="uppercase font-bold tracking-[1.43px] text-[28px] md:text-[40px] text-start py-4">
-                {product.title}
+                {earphone.title}
               </h1>
               <p className="text-sm text-black/70 lg:px-0 text-start">
-                {product.description}
+                {earphone.description}
               </p>
               <p className="text-[18px] font-bold tracking-[1.29px] pt-4 ">
-                $ {product.price}
+                $ {earphone.price}
               </p>
 
               <div className="flex justify-center items-start mt-8 flex-row gap-4">
@@ -92,10 +92,10 @@ const ProductPage = () => {
                 </h1>
                 <div className="space-y-12">
                   <p className="text-[15px] text-black/70 leading-[25px] ">
-                    {product.features?.[0]}
+                    {earphone.features?.[0]}
                   </p>
                   <p className="text-[15px] text-black/70 leading-[25px] ">
-                    {product.features?.[1]}
+                    {earphone.features?.[1]}
                   </p>
                 </div>
               </div>
@@ -105,42 +105,42 @@ const ProductPage = () => {
               <ul className="flex flex-col gap-3">
                 <li className="flex items-center gap-6">
                   <span className="text-[#D87D4A] text-[15px] font-bold ">
-                    {product.inTheBox?.[0].quantity}X
+                    {earphone.inTheBox?.[0].quantity}X
                   </span>
                   <span className="text-[15px] text-black/80 ">
-                    {product.inTheBox?.[0].item}
+                    {earphone.inTheBox?.[0].item}
                   </span>
                 </li>
                 <li className="flex items-center gap-6">
                   <span className="text-[#D87D4A] text-[15px] font-bold ">
-                    {product.inTheBox?.[1].quantity}X
+                    {earphone.inTheBox?.[1].quantity}X
                   </span>
                   <span className="text-[15px] text-black/80 ">
-                    {product.inTheBox?.[1].item}
+                    {earphone.inTheBox?.[1].item}
                   </span>
                 </li>
                 <li className="flex items-center gap-6">
                   <span className="text-[#D87D4A] text-[15px] font-bold ">
-                    {product.inTheBox?.[2].quantity}X
+                    {earphone.inTheBox?.[2].quantity}X
                   </span>
                   <span className="text-[15px] text-black/80 ">
-                    {product.inTheBox?.[2].item}
+                    {earphone.inTheBox?.[2].item}
                   </span>
                 </li>
                 <li className="flex items-center gap-6">
                   <span className="text-[#D87D4A] text-[15px] font-bold ">
-                    {product.inTheBox?.[3].quantity}X
+                    {earphone.inTheBox?.[3].quantity}X
                   </span>
                   <span className="text-[15px] text-black/80 ">
-                    {product.inTheBox?.[3].item}
+                    {earphone.inTheBox?.[3].item}
                   </span>
                 </li>
                 <li className="flex items-center gap-6">
                   <span className="text-[#D87D4A] text-[15px] font-bold ">
-                    {product.inTheBox?.[4].quantity}X
+                    {earphone.inTheBox?.[4].quantity}X
                   </span>
                   <span className="text-[15px] text-black/80 ">
-                    {product.inTheBox?.[4].item}
+                    {earphone.inTheBox?.[4].item}
                   </span>
                 </li>
               </ul>
@@ -152,20 +152,20 @@ const ProductPage = () => {
 
 object-top, object-center, object-bottom, object-left, object-right → alignment. */}
               <img
-                src={product.gallery?.[0]}
-                alt={product.title}
+                src={earphone.gallery?.[0]}
+                alt={earphone.title}
                 className="h-[174px] lg:h-[280px] w-full filter grayscale object-cover object-left rounded-lg"
               />
               <img
-                src={product.gallery?.[1]}
-                alt={product.title}
+                src={earphone.gallery?.[1]}
+                alt={earphone.title}
                 className="h-[174px] lg:h-[280px] w-full filter grayscale object-fill rounded-lg"
               />
             </div>
             <div>
               <img
-                src={product.gallery?.[2]}
-                alt={product.title}
+                src={earphone.gallery?.[2]}
+                alt={earphone.title}
                 className="h-[368px] lg:h-[592px] filter grayscale  w-full object-cover overflow-hidden rounded-lg"
               />
             </div>
@@ -180,4 +180,4 @@ object-top, object-center, object-bottom, object-left, object-right → alignmen
   );
 };
 
-export default ProductPage;
+export default EarphoneDisplayPage;

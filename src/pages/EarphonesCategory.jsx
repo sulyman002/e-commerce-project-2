@@ -3,9 +3,11 @@ import CategoriesHeader from "../components/CategoriesHeader";
 import NewProducts from "../common/NewProducts";
 import HomeBringing from "../components/HomeBringing";
 import SellProductBtn from "../components/SellProductBtn";
+import { useNavigate } from "react-router-dom";
 
 const EarphonesCategory = () => {
   const [earphones, setEarphones] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     try {
@@ -51,7 +53,7 @@ const EarphonesCategory = () => {
                 <p className="text-sm text-black/70 px-4 lg:px-0 text-center lg:text-start">
                   {earphone.description}
                 </p>
-                <SellProductBtn className="lg:py-5 lg:px-8 mt-8">
+                <SellProductBtn onClick={() => navigate(`/earphone/${earphone.id}`)} className="lg:py-5 lg:px-8 mt-8">
                   see product
                 </SellProductBtn>
               </div>

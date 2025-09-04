@@ -8,6 +8,8 @@ import EarphonesCategory from "./pages/EarphonesCategory";
 import SpeakersCategory from "./pages/SpeakersCategory";
 import ProductPage from "./common/ProductPage";
 import UserLayout from "./layouts/UUserLayout";
+import SpeakerDisplayPage from "./common/SpeakerDisplayPage";
+import EarphoneDisplayPage from "./common/EarphoneDisplayPage";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route path="speakers" element={<SpeakersCategory />} />
           <Route path="earphones" element={<EarphonesCategory />} />
           <Route path="product/:id" element={<ProductPage />} />
+          <Route path="speaker/:id" element={<SpeakerDisplayPage />} />
+          <Route path="earphone/:id" element={<EarphoneDisplayPage />} />
         </Route>
       </Routes>
     </>
