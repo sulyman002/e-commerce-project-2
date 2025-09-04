@@ -1,6 +1,6 @@
 import React from "react";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
-import { Link, Links } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const facebookLink = "https://www.facebook.com/";
@@ -9,6 +9,8 @@ const Footer = () => {
   const data = new Date();
   const getYear = data.getFullYear();
   console.log(getYear);
+
+  const navigate = useNavigate();
   return (
     <footer className="bg-[#101010] text-white relative">
       <div className="container mx-auto flex flex-col items-center md:items-start justify-center md:justify-start space-y-8 pt-10 pb-4 px-6">
@@ -20,18 +22,45 @@ const Footer = () => {
             audiophile
           </h3>
           <nav className="flex flex-col md:flex-row md:space-x-6 text-center space-y-4 pt-4 lg:pt-0 text-[13px] font-bold">
-            <Link to="/" className=" hover:text-[#D87D4A] uppercase">
+            <div
+              onClick={() => {
+                navigate("/");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className=" hover:text-[#D87D4A] uppercase"
+            >
               Home
-            </Link>
-            <Link to="headphones" className=" hover:text-[#D87D4A] uppercase">
+            </div>
+
+            <div
+              onClick={() => {
+                navigate("/headphones");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className=" hover:text-[#D87D4A] uppercase"
+            >
               Headphones
-            </Link>
-            <Link to="speakers" className=" hover:text-[#D87D4A] uppercase">
-              Speaker
-            </Link>
-            <Link to="earphones" className=" hover:text-[#D87D4A] uppercase">
+            </div>
+
+            <div
+              onClick={() => {
+                navigate("/speakers");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className=" hover:text-[#D87D4A] uppercase"
+            >
+              Speakers
+            </div>
+
+            <div
+              onClick={() => {
+                navigate("/earphones");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className=" hover:text-[#D87D4A] uppercase"
+            >
               Earphones
-            </Link>
+            </div>
           </nav>
         </div>
 
