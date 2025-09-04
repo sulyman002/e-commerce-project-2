@@ -2,6 +2,7 @@ import React from "react";
 import banner_circle from "../assets/desktop_home/spk_bg.png";
 import SellProductBtn from "./SellProductBtn";
 import speaker from "../assets/desktop_home/speakers.png";
+import { Link } from "react-router-dom";
 
 const HomeBanners = () => {
   return (
@@ -30,9 +31,11 @@ const HomeBanners = () => {
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </p>
-          <SellProductBtn className="bg-black lg:px-8 lg:py-5 text-white uppercase hover:bg-[#4C4C4C]">
-            See Product
-          </SellProductBtn>
+          <Link to="speakers">
+            <SellProductBtn className="bg-black lg:px-8 lg:py-5 text-white uppercase hover:bg-[#4C4C4C]">
+              See Product
+            </SellProductBtn>
+          </Link>
         </div>
       </div>
     </section>

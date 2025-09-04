@@ -1,6 +1,7 @@
 import React from "react";
 import headphone from "../assets/desktop_home/mobile/headphone_bg.png";
 import SellProductBtn from "../components/SellProductBtn";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -21,9 +22,9 @@ const HeroSection = () => {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
-          <SellProductBtn>
-            see product
-            </SellProductBtn>
+          <Link to="headphones">
+            <SellProductBtn>see product</SellProductBtn>
+          </Link>
         </div>
       </div>
     </section>

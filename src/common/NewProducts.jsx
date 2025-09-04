@@ -14,7 +14,7 @@ const NewProducts = () => {
         </div>
         <div className="flex flex-col items-center justify-center gap-2 mt-8">
           <h3 className="uppercase text-[15px]  ">Headphones</h3>
-          <Link to="#" className="flex items-center gap-2">
+          <Link to="headphones" className="flex items-center gap-2">
             <span className="text-[13px] text-black/40 ">SHOP</span>
             <img src={arrow} alt="arrow_right" />
           </Link>
@@ -27,7 +27,7 @@ const NewProducts = () => {
         </div>
         <div className="flex flex-col items-center justify-center gap-2 mt-8">
           <h3 className="uppercase text-[15px]  ">Speakers</h3>
-          <Link to="#" className="flex items-center gap-2">
+          <Link to="speakers" className="flex items-center gap-2">
             <span className="text-[13px] text-black/40 ">SHOP</span>
             <img src={arrow} alt="arrow_right" />
           </Link>
@@ -40,7 +40,7 @@ const NewProducts = () => {
         </div>
         <div className="flex flex-col items-center justify-center gap-2 mt-8">
           <h3 className="uppercase text-[15px]  ">Earphones</h3>
-          <Link to="#" className="flex items-center gap-2">
+          <Link to="earphones" className="flex items-center gap-2">
             <span className="text-[13px] text-black/40 ">SHOP</span>
             <img src={arrow} alt="arrow_right" />
           </Link>

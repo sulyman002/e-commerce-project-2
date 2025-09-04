@@ -3,24 +3,120 @@
     "id": 1,
     "title": "XX99 Mark II Headphones",
     "description": "The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.",
+    "price": 2999,
     "image": "/headphones/headphone1.png",
     "new": true,
-    "reverse": false
+    "reverse": false,
+    "features": [
+      "The advanced Active Noise Cancellation with built-in equalizer allows you to experience your audio world on your terms. Best in class comfort and build, they’re designed to last. The XX99 Mark II headphones give you superior sound, cutting-edge technology, and a modern design aesthetic.",
+      "Featuring a genuine leather head strap and premium earcups, these headphones deliver superior comfort for those who like to enjoy endless listening. It includes intuitive controls designed for your convenience, so you can pause music to take calls or skip tracks with ease."
+    ],
+    "inTheBox": [
+      {
+        "quantity": 1,
+        "item": "Headphone Unit"
+      },
+      {
+        "quantity": 2,
+        "item": "Replacement Earcups"
+      },
+      {
+        "quantity": 1,
+        "item": "User Manual"
+      },
+      {
+        "quantity": 1,
+        "item": "3.5mm Audio Cable"
+      },
+      {
+        "quantity": 1,
+        "item": "Travel Bag"
+      }
+    ],
+    "gallery": [
+      "/audio1/audio1.png",
+      "/audio1/audio2.png",
+      "/audio1/audio3.png"
+    ]
   },
   {
     "id": 2,
     "title": "XX99 Mark I Headphones",
     "description": "As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike in studios and on the go.",
+    "price": 1750,
     "image": "/headphones/headphone2.png",
     "new": false,
-    "reverse": true
+    "reverse": true,
+    "features": [
+      "The advanced Active Noise Cancellation with built-in equalizer allows you to experience your audio world on your terms. Best in class comfort and build, they’re designed to last. The XX99 Mark II headphones give you superior sound, cutting-edge technology, and a modern design aesthetic.",
+      "Featuring a genuine leather head strap and premium earcups, these headphones deliver superior comfort for those who like to enjoy endless listening. It includes intuitive controls designed for your convenience, so you can pause music to take calls or skip tracks with ease."
+    ],
+    "inTheBox": [
+      {
+        "quantity": 1,
+        "item": "Headphone Unit"
+      },
+      {
+        "quantity": 2,
+        "item": "Replacement Earcups"
+      },
+      {
+        "quantity": 1,
+        "item": "User Manual"
+      },
+      {
+        "quantity": 1,
+        "item": "3.5mm Audio Cable"
+      },
+      {
+        "quantity": 1,
+        "item": "Travel Bag"
+      }
+    ],
+    "gallery": [
+      "/audio2/audio1.png",
+      "/audio2/audio2.png",
+      "/audio2/audio3.png"
+    ]
   },
   {
     "id": 3,
     "title": "XX59 Headphones",
     "description": "Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. This stylish yet durable versatile wireless headset is a brilliant companion at home or on the move.",
+    "price": 899,
     "image": "/headphones/headphone3.png",
     "new": false,
-    "reverse": false
+    "reverse": false,
+    "features": [
+      "The advanced Active Noise Cancellation with built-in equalizer allows you to experience your audio world on your terms. Best in class comfort and build, they’re designed to last. The XX99 Mark II headphones give you superior sound, cutting-edge technology, and a modern design aesthetic.",
+      "Featuring a genuine leather head strap and premium earcups, these headphones deliver superior comfort for those who like to enjoy endless listening. It includes intuitive controls designed for your convenience, so you can pause music to take calls or skip tracks with ease."
+    ],
+    "inTheBox": [
+      {
+        "quantity": 1,
+        "item": "Headphone Unit"
+      },
+      {
+        "quantity": 2,
+        "item": "Replacement Earcups"
+      },
+      {
+        "quantity": 1,
+        "item": "User Manual"
+      },
+      {
+        "quantity": 1,
+        "item": "3.5mm Audio Cable"
+      },
+      {
+        "quantity": 1,
+        "item": "Travel Bag"
+      }
+    ],
+    "gallery": [
+      "/audio3/audio1.png",
+      "/audio3/audio2.png",
+      "/audio3/audio3.png"
+    ]
   }
 ]

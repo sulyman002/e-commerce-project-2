@@ -3,9 +3,11 @@ import CategoriesHeader from "../components/CategoriesHeader";
 import HomeBringing from "../components/HomeBringing";
 import NewProducts from "../common/NewProducts";
 import SellProductBtn from "../components/SellProductBtn";
+import { useNavigate } from "react-router-dom";
 
 const HeadphonesCategory = () => {
   const [Products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     try {
@@ -47,7 +49,7 @@ const HeadphonesCategory = () => {
                 )}
                 <h1 className="uppercase font-bold tracking-[1.43px] text-[28px] md:text-[40px] text-center lg:text-start py-4">{product.title}</h1>
                 <p className="text-sm text-black/70 px-4 lg:px-0 text-center lg:text-start">{product.description}</p>
-                <SellProductBtn className="lg:py-5 lg:px-8 mt-8">see product</SellProductBtn>
+                <SellProductBtn onClick={() => navigate(`/product/${product.id}`)} className="lg:py-5 lg:px-8 mt-8">see product</SellProductBtn>
               </div>
             </div>
           ))}
