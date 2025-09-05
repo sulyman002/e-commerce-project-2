@@ -5,6 +5,7 @@ import cart from "../assets/desktop_home/mobile/cart.svg";
 import { IoMdClose } from "react-icons/io"; // Import the close icon from react-icons
 import HeroSection from "../layouts/HeroSection";
 import { useEffect } from "react";
+import Cart from "./Cart";
 
 const NavBar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -116,83 +117,7 @@ const NavBar = () => {
 
       {/* Cart container */}
 
-      {cartDisplay && (
-        <div className="fixed bg-black/60 inset-0 z-10">
-          <div className="flex justify-center md:justify-end md:items-start md:mt-20 md:mr-40 items-center h-full px-4">
-            <div className="w-full mx-6 md:w-[377px] h-[488px] bg-white rounded-lg">
-              <button
-                onClick={handleCartClicked}
-                className="flex justify-end w-full p-4 cursor-pointer"
-              >
-                <IoMdClose className="h-8 w-8 font-bold text-black" />
-              </button>
-              <div>
-                <div className="flex justify-between items-center px-6">
-                  <h2 className="text-[18px] font-bold text-black ">
-                    Cart (3)
-                  </h2>
-                  <div className="underline text-black/70 text-[15px] cursor-pointer ">
-                    Remove all
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex text-black flex-col gap-4 mt-3 h-1/2 overflow-y-auto bg-gray-200 py-3 px-3 mx-6 rounded-md">
-               
-              {/* cart content */}
-               <div className="flex items-center justify-between gap-2">
-                  <div className="flex gap-2">
-                    <div className="h-[64px] w-[64px] bg-[#F1F1F1] rounded flex items-center justify-center ">
-                      <img
-                        src={cartData?.[0].image}
-                        alt=""
-                        className=" h-[40px] rounded "
-                      />
-                    </div>
-                    <div className="flex flex-col items-start justify-start gap-[2px] w-[76px] overflow-x-auto">
-                      <h2 className="text-[15px] font-bold whitespace-nowrap ">
-                        {cartData?.[0].title}
-                      </h2>
-                      <p className="text-sm font-bold text-black/50 ">
-                        $ {cartData?.[0].price}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex font-bold text-sm py-4 items-center justify-evenly gap-4 w-[120px] bg-[#F1F1F1] ">
-                    <div onClick={handleDecrement} className="text-black/70">
-                      -
-                    </div>
-                    <div className="">{count}</div>
-                    <div onClick={handleIncrement} className="text-black/70">
-                      +
-                    </div>
-                  </div>
-                </div>
-
-                
-                
-
-                 
-
-                {/* cart content end here */} 
-                {/* work on it later */}
-
-              </div>
-              <div className="py-4 px-6 flex justify-between items-center">
-                <h2 className="text-[15px] font-bold text-black/50 ">Total</h2>
-                <h2 className="text-[20px] font-bold text-black ">$5,000</h2>
-              </div>
-              <div className="px-6 items-center w-full">
-                <button onClick={() => {
-                  navigate("checkout");
-                  handleCartClicked();
-                }} className="bg-[#D87D4A] w-full text-white p-4 hover:bg-orange-600 mb-4">
-                  Checkout
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+      {cartDisplay && ( <Cart cartData={cartData} navigate={navigate} handleIncrement={handleIncrement} handleDecrement={handleDecrement} count={count} handleCartClicked={handleCartClicked} />
       )}
       {/* <div  
         

@@ -1,39 +1,52 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react;
+
 
 const CheckoutPage = () => {
-    const [updateInputs, setUpdateInput] = useState({
-            name: "",
-            email: "",
-            phoneNumber: "",
-            address: "",
-            zipCode: "",
-            city: "",
-            country: "",
-            payment: "",
-            eMoney: "",
-            eMoneyPin: ""
+  const [updateInputs, setUpdateInput] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    address: "",
+    zipCode: "",
+    city: "",
+    country: "",
+    payment: "",
+    eMoney: "",
+    eMoneyPin: "",
+  });
 
+  function handleAllInput(event) {
+    const { name, value } = event.target;
+    console.log(value);
+    setUpdateInput((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+  const [summaryData, setSummaryData] = useState(null);
+  
+  useEffect(() => {
+    fetch("/earphones.json")
+        .then((res) => res.json())
+        .then((data) => {
+            setSummaryData(data);
+            console.log(data)
 
-    });
+        })
+  
 
-    function handleAllInput(event) {
-        const {name, value} = event.target;
-        console.log(value);
-        setUpdateInput((prev) => ({
-            ...prev,
-            [name] : value
-        }))
-
-    }
+  }, [])
+  
 
   return (
     <div className="bg-gray-100">
       <section className="container mx-auto">
-        <div className="py-8 px-6">
+        <div className="py-8 px-6 gap-8 flex flex-col">
           <Link
             to="../earphones"
-            className="text-sm text-black-700 inline-block pb-4 lg:mt-8"
+            className="text-sm text-black-700 inline-block lg:mt-8"
           >
             Go Back
           </Link>
@@ -191,7 +204,8 @@ const CheckoutPage = () => {
                       <input
                         type="radio"
                         name="payment"
-                        value={updateInputs.payment}
+                        value="e-money"
+                        checked={updateInputs.payment === "e-money"}
                         onChange={handleAllInput}
                         className="h-[20px] w-[20px] bg-[#D87D4A] "
                       />
@@ -203,7 +217,8 @@ const CheckoutPage = () => {
                       <input
                         type="radio"
                         name="payment"
-                        value={updateInputs.payment}
+                        value="cash"
+                        checked={updateInputs.payment === "cash"}
                         onChange={handleAllInput}
                         className="h-[20px] w-[20px] bg-[#D87D4A] "
                       />
@@ -252,10 +267,20 @@ const CheckoutPage = () => {
                   </div>
                 </div>
               </div>
-
-              
             </div>
           </form>
+          <div className="bg-white w-full px-4 py-6 rounded-[8px] flex flex-col gap-6">
+            <h1 className="text-[28px] font-bold tracking-[1px] uppercase">
+              Summary
+            </h1>
+            <div className="w-full flex flex-col gap-3">
+              {/* here, we going to use .map() method to display 
+              the data we get from the cart as summary, but for now, 
+              let work with random data i will just fetch a random data for now */}
+
+
+            </div>
+          </div>
         </div>
       </section>
     </div>
