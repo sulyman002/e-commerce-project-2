@@ -117,7 +117,15 @@ const NavBar = () => {
 
       {/* Cart container */}
 
-      {cartDisplay && ( <Cart cartData={cartData} navigate={navigate} handleIncrement={handleIncrement} handleDecrement={handleDecrement} count={count} handleCartClicked={handleCartClicked} />
+      {cartDisplay && (
+        <Cart
+          cartData={cartData}
+          navigate={navigate}
+          handleIncrement={handleIncrement}
+          handleDecrement={handleDecrement}
+          count={count}
+          handleCartClicked={handleCartClicked}
+        />
       )}
       {/* <div  
         

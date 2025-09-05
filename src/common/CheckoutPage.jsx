@@ -36,6 +36,13 @@ const CheckoutPage = () => {
       });
   }, []);
 
+  const [payment, setPayment] = useState(false);
+
+  function handlePayment() {
+    setPayment(!payment);
+    console.log("you clicked on the payment button");
+  }
+
   return (
     <div className="bg-gray-100">
       <section className="container mx-auto">
@@ -355,7 +362,17 @@ const CheckoutPage = () => {
                 </div>
               </div>
 
-              <SellProductBtn className="">Continue & Pay</SellProductBtn>
+              <SellProductBtn onClick={handlePayment} className="">
+                Continue & Pay
+              </SellProductBtn>
+
+              {payment && (
+                <div className="fixed bg-black/60 inset-0 z-10">
+                  <div className="flex justify-center md:justify-end md:items-start md:mt-20 md:mr-40 items-center h-full px-4">
+                    <div className="w-full mx-6 md:w-[377px] h-[488px] bg-white rounded-lg"></div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
