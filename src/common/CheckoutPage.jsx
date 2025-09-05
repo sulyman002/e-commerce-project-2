@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import SellProductBtn from "../components/SellProductBtn";
 import success_mark from "../assets/desktop_home/success_mark.svg"
@@ -43,6 +43,8 @@ const CheckoutPage = () => {
     setPayment(!payment);
     console.log("you clicked on the payment button");
   }
+
+  const navigate = useNavigate();
 
   return (
     <div className="bg-gray-100">
@@ -380,7 +382,10 @@ const CheckoutPage = () => {
                             No order!!!
                         </div>
 
-                        <SellProductBtn>
+                        <SellProductBtn onClick={() => {
+                            navigate("/");
+                            window.scrollTo({top: 0, behavior: "smooth"});
+                        }}>
                             Back to Home
                         </SellProductBtn>
                     </div>
