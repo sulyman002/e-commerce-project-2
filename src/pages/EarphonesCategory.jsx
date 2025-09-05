@@ -43,8 +43,8 @@ const EarphonesCategory = () => {
               </div>
               <div className="w-full lg:w-1/2 md:px-6 lg:px-0 lg:pr-10 flex h-auto flex-col items-center lg:items-start justify-center">
                 {earphone.new && (
-                  <p className="text-sm text-center text-[#D87D4A] tracking-[10px] mb-4">
-                    NEW earphone
+                  <p className="text-sm uppercase text-center text-[#D87D4A] tracking-[10px] mb-4">
+                    New earphone
                   </p>
                 )}
                 <h1 className="uppercase font-bold tracking-[1.43px] text-[28px] md:text-[40px] text-center lg:text-start py-4">

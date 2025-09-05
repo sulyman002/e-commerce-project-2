@@ -10,6 +10,7 @@ import ProductPage from "./common/ProductPage";
 import UserLayout from "./layouts/UUserLayout";
 import SpeakerDisplayPage from "./common/SpeakerDisplayPage";
 import EarphoneDisplayPage from "./common/EarphoneDisplayPage";
+import CheckoutPage from "./common/CheckoutPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="product/:id" element={<ProductPage />} />
           <Route path="speaker/:id" element={<SpeakerDisplayPage />} />
           <Route path="earphone/:id" element={<EarphoneDisplayPage />} />
+          <Route path="checkout" element={<CheckoutPage />} />
         </Route>
       </Routes>
     </>

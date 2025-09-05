@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import hamburger from "../assets/desktop_home/mobile/hamburger.svg";
 import cart from "../assets/desktop_home/mobile/cart.svg";
 import { IoMdClose } from "react-icons/io"; // Import the close icon from react-icons
@@ -11,6 +11,7 @@ const NavBar = () => {
   const location = useLocation();
   const [cartDisplay, setCartdisplay] = useState(false);
   const [cartData, setCartData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/earphones.json")
@@ -264,7 +265,10 @@ const NavBar = () => {
                 <h2 className="text-[20px] font-bold text-black ">$5,000</h2>
               </div>
               <div className="px-6 items-center w-full">
-                <button className="bg-[#D87D4A] w-full text-white p-4 hover:bg-orange-600 mb-4">
+                <button onClick={() => {
+                  navigate("checkout");
+                  handleCartClicked();
+                }} className="bg-[#D87D4A] w-full text-white p-4 hover:bg-orange-600 mb-4">
                   Checkout
                 </button>
               </div>
