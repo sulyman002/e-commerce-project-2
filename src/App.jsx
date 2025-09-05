@@ -1,6 +1,6 @@
 import React from "react";
-// import { Routes, Route } from "react-router-dom";
-import { Route, Routes } from "react-router";
+import { Routes, Route } from "react-router-dom";
+
 
 import { Toaster } from "sonner";
 import Home from "./pages/Home";
