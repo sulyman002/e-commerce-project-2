@@ -1,5 +1,6 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+// import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router";
 
 import { Toaster } from "sonner";
 import Home from "./pages/Home";
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<UserLayout />}>
           <Route index element={<Home />} />
+
           <Route path="headphones" element={<HeadphonesCategory />} />
           <Route path="speakers" element={<SpeakersCategory />} />
           <Route path="earphones" element={<EarphonesCategory />} />
