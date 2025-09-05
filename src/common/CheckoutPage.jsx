@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import SellProductBtn from "../components/SellProductBtn";
+import success_mark from "../assets/desktop_home/success_mark.svg"
 
 const CheckoutPage = () => {
   const [updateInputs, setUpdateInput] = useState({
@@ -368,8 +369,21 @@ const CheckoutPage = () => {
 
               {payment && (
                 <div className="fixed bg-black/60 inset-0 z-10">
-                  <div className="flex justify-center md:justify-end md:items-start md:mt-20 md:mr-40 items-center h-full px-4">
-                    <div className="w-full mx-6 md:w-[377px] h-[488px] bg-white rounded-lg"></div>
+                  <div className="flex justify-center items-center h-full px-4">
+                    <div className="flex flex-col w-full mx-6 md:w-[600px] h- bg-white rounded-lg p-8">
+                        <div className="flex flex-col gap-5">
+                            <div className="w-[64px] h-[64px] rounded-full bg-[#D87D4A] flex items-center justify-center "> <img src={success_mark} alt="success" /></div>
+                            <h2 className="text-[24px] font-bold leading-[28px] tracking-[0.86px] w-[260px] text-balance overflow-hidden">THANK YOU FOR YOUR ORDER</h2>
+                            <p className="text-black/50 text-[15px] ">You will receive an email confirmation shortly.</p>
+                        </div>
+                        <div className="text-red-500 font-bold capitalize italic h-[200px] flex items-center justify-center">
+                            No order!!!
+                        </div>
+
+                        <SellProductBtn>
+                            Back to Home
+                        </SellProductBtn>
+                    </div>
                   </div>
                 </div>
               )}
