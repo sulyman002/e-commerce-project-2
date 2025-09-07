@@ -3,19 +3,38 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import LikelyProduct from "./LikelyProduct";
+import { getItem, setItem } from "../utils/useLocalStoragepersist";
 
 const EarphoneDisplayPage = () => {
   const { id } = useParams();
   const [earphone, setEarphone] = useState({});
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(() => {
+    const item = getItem("count");
+    return item ? item : {};
+  });
 
-  function handleIncrement() {
-    setCount(count + 1);
+  useEffect(() => {
+    setItem("count", count);
+  }, [count]);
+
+  function handleIncrement(id) {
+    setCount((prev) => ({
+      ...prev,
+      [id]: (Number(prev[id]) || 1) + 1,
+    }));
   }
-  function handleDecrement() {
-    if (count > 1) {
-      setCount(count - 1);
-    }
+
+  function handleDecrement(id) {
+    setCount((prev) => {
+      const current = Number(prev[id]) || 1;
+      if (current > 1) {
+        return {
+          ...prev,
+          [id]: current - 1,
+        };
+      }
+      return prev;
+    });
   }
 
   useEffect(() => {
@@ -68,11 +87,11 @@ const EarphoneDisplayPage = () => {
 
               <div className="flex justify-center items-start mt-8 flex-row gap-4">
                 <div className="flex font-bold text-sm py-4 items-center justify-evenly gap-4 w-[120px] bg-[#F1F1F1] ">
-                  <div onClick={handleDecrement} className="text-black/70">
+                  <div onClick={() => handleDecrement(earphone.id)} className="text-black/70">
                     -
                   </div>
-                  <div className="">{count}</div>
-                  <div onClick={handleIncrement} className="text-black/70">
+                  <div className="">{count[earphone.id] || 1}</div>
+                  <div onClick={() => handleIncrement(earphone.id)} className="text-black/70">
                     +
                   </div>
                 </div>

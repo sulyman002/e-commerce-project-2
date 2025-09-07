@@ -1,6 +1,7 @@
 import React from "react";
 
 const CartContent = ({handleDecrement, handleIncrement, cartData, count}) => {
+
   return (
     <div className="flex text-black flex-col gap-4 mt-3 h-1/2 overflow-y-auto bg-gray-200 py-3 px-3 mx-6 rounded-md">
       {/* cart content */}

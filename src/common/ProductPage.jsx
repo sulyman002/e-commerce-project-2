@@ -3,19 +3,46 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import LikelyProduct from "./LikelyProduct";
+import { setItem, getItem } from "../utils/useLocalStoragepersist.js";
 
 const ProductPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(() => {
+    const item = getItem("count");
+    return item ? item : {};
+  });
+  const [newArray, setNewArray] = useState(() => {
+    const cartItems = getItem("newArray");
+    return Array.isArray(cartItems) ? cartItems : [];
+    
+  });
 
-  function handleIncrement() {
-    setCount(count + 1);
+  useEffect(() => {
+    setItem("newArray", newArray);
+  }, [newArray]);
+
+  useEffect(() => {
+    setItem("count", count);
+  }, [count]);
+
+  function handleIncrement(id) {
+    setCount((prev) => ({
+      ...prev,
+      [id]: (Number(prev[id]) || 1) + 1,
+    }));
   }
-  function handleDecrement() {
-    if (count > 1) {
-      setCount(count - 1);
-    }
+  function handleDecrement(id) {
+    setCount((prev) => {
+      const current = Number(prev[id]) || 1;
+      if (current > 1) {
+        return {
+          ...prev,
+          [id]: current - 1,
+        };
+      }
+      return prev;
+    });
   }
 
   useEffect(() => {
@@ -23,6 +50,7 @@ const ProductPage = () => {
       fetch("../../products.json")
         .then((res) => res.json())
         .then((data) => {
+          // setGrabData(data);
           const findId = data.find((item) => item.id === parseInt(id));
           setProduct(findId);
         });
@@ -30,6 +58,21 @@ const ProductPage = () => {
       console.error("Error fetching product:", error);
     }
   }, [id]);
+
+  function handleAddToCartClicked(product) {
+    setNewArray((prevData) => {
+      const exists = prevData.find((item) => item.id === product.id);
+      console.log(exists);
+      if (exists) {
+        console.log("Already in cart:", exists);
+        return prevData;
+      } else {
+        const updated = [...prevData, product];
+        console.log("New Cart ", updated);
+        return updated;
+      }
+    });
+  }
 
   return (
     <div>
@@ -68,16 +111,25 @@ const ProductPage = () => {
 
               <div className="flex justify-center items-start mt-8 flex-row gap-4">
                 <div className="flex font-bold text-sm py-4 items-center justify-evenly gap-4 w-[120px] bg-[#F1F1F1] ">
-                  <div onClick={handleDecrement} className="text-black/70">
+                  <div
+                    onClick={() => handleDecrement(product.id)}
+                    className="text-black/70"
+                  >
                     -
                   </div>
-                  <div className="">{count}</div>
-                  <div onClick={handleIncrement} className="text-black/70">
+                  <div className="">{count[product.id] || 1}</div>
+                  <div
+                    onClick={() => handleIncrement(product.id)}
+                    className="text-black/70"
+                  >
                     +
                   </div>
                 </div>
                 <Link to="#">
-                  <button className="bg-[#D87D4A] text-sm tracking-[1px] cursor-pointer font-bold  text-white w-[160px] py-4 uppercase hover:bg-[#FBAF85]">
+                  <button
+                    onClick={() => handleAddToCartClicked(product)}
+                    className="bg-[#D87D4A] text-sm tracking-[1px] cursor-pointer font-bold  text-white w-[160px] py-4 uppercase hover:bg-[#FBAF85]"
+                  >
                     ADD TO CART
                   </button>
                 </Link>

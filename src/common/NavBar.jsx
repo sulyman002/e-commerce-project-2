@@ -125,6 +125,7 @@ const NavBar = () => {
           handleDecrement={handleDecrement}
           count={count}
           handleCartClicked={handleCartClicked}
+          
         />
       )}
       {/* <div  

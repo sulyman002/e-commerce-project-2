@@ -3,19 +3,39 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import LikelyProduct from "./LikelyProduct";
+import { setItem, getItem } from "../utils/useLocalStoragepersist";
 
 const SpeakerDisplayPage = () => {
   const { id } = useParams();
   const [speaker, setSpeaker] = useState({});
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(() => {
+    const item = getItem('count');
+    return item ? item : {};
+  });
 
-  function handleIncrement() {
-    setCount(count + 1);
+  useEffect(() => {
+    setItem("count", count);
+  }, [count]);
+
+  function handleIncrement(id) {
+    setCount((prev) => ({
+      ...prev,
+      [id]: (Number(prev[id]) || 1) + 1,
+    }));
   }
-  function handleDecrement() {
-    if (count > 1) {
-      setCount(count - 1);
-    }
+ 
+
+  function handleDecrement(id) {
+    setCount((prev) => {
+      const current = Number(prev[id]) || 1;
+      if (current > 1) {
+        return {
+          ...prev,
+          [id]: current - 1,
+        };
+      }
+      return prev;
+    });
   }
 
   useEffect(() => {
@@ -71,7 +91,7 @@ const SpeakerDisplayPage = () => {
                   <div onClick={handleDecrement} className="text-black/70">
                     -
                   </div>
-                  <div className="">{count}</div>
+                  <div className="">{count[speaker.id] || 1}</div>
                   <div onClick={handleIncrement} className="text-black/70">
                     +
                   </div>
