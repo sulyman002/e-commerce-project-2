@@ -35,15 +35,15 @@ const NavBar = () => {
     setIsNavOpen(!isNavOpen);
   }
 
-const [count, setCount] = useState(() => {
+  const [count, setCount] = useState(() => {
     const item = getItem("count");
     return item ? item : {};
   });
-   useEffect(() => {
-      setItem("count", count);
-    }, [count]);
+  useEffect(() => {
+    setItem("count", count);
+  }, [count]);
 
-   function handleIncrement(id) {
+  function handleIncrement(id) {
     setCount((prev) => ({
       ...prev,
       [id]: (Number(prev[id]) || 1) + 1,
@@ -61,6 +61,15 @@ const [count, setCount] = useState(() => {
       return prev;
     });
   }
+
+  const [newArray, setNewArray] = useState(() => {
+    const cartItems = getItem("newArray");
+    return Array.isArray(cartItems) ? cartItems : [];
+  });
+
+  useEffect(() => {
+    setItem("newArray", newArray);
+  }, [newArray]);
   return (
     <div className="bg-[#101010] text-white ">
       <div className="relative container mx-auto">
@@ -90,7 +99,9 @@ const [count, setCount] = useState(() => {
 
           <div onClick={handleCartClicked} className="relative">
             <img src={cart} alt="cart" />
-            <div className="absolute"></div>
+            <div className="absolute text-white top-[-4px] right-[-4px] text-[7px] font-semibold w-[12px] h-[12px] rounded-full bg-red-600 flex items-center justify-center">
+              {newArray.length}
+            </div>
           </div>
         </nav>
         {/* mobile Nav Content */}
@@ -143,30 +154,8 @@ const [count, setCount] = useState(() => {
           handleDecrement={handleDecrement}
           count={count}
           handleCartClicked={handleCartClicked}
-          
         />
       )}
-      {/* <div  
-        
-        className={`${cartDisplay ? "hidden " : " hidden"} fixed top-0 left-0`}
-      >
-        <nav>
-          <ul className="flex flex-col space-y-6 text-sm font-700 md:items-center mt-10 px-6">
-            <Link to="/" className=" hover:text-[#D87D4A] uppercase">
-              Home
-            </Link>
-            <Link to="headphones" className=" hover:text-[#D87D4A] uppercase">
-              Headphones
-            </Link>
-            <Link to="speakers" className=" hover:text-[#D87D4A] uppercase">
-              Speaker
-            </Link>
-            <Link to="earphones" className=" hover:text-[#D87D4A] uppercase">
-              Earphones
-            </Link>
-          </ul>
-        </nav>
-      </div> */}
     </div>
   );
 };

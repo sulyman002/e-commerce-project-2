@@ -74,9 +74,21 @@ const CheckoutPage = () => {
 
   const shippingFee = cartItems.reduce((prev, item) =>{
     const shippingQuantity = count[item.id] || 1;
-    const percent = item.price * 0.05;
-    return prev + percent *
+    const percent = item.price * 0.02;
+    const theFees = Math.floor(prev + percent * shippingQuantity);
+    return theFees;
   },0)
+
+  const vatFee = cartItems.reduce((prev, item) => {
+    const productValue = item.price;
+    const vat = Math.floor((prev + productValue + shippingFee) * 0.075)
+    return vat;
+  },0)
+
+
+  const grandTotal = getTotal + shippingFee + vatFee;
+  
+
 
   return (
     <div className="bg-gray-100">
@@ -396,20 +408,20 @@ const CheckoutPage = () => {
                   <p className="text-[15px] uppercase text-black/50 ">
                     SHIPPING
                   </p>
-                  <p className="text-[18px] font-bold ">$ 50</p>
+                  <p className="text-[18px] font-bold ">$ {shippingFee}</p>
                 </div>
                 <div className="flex items-center justify-between mb-4">
                   <p className="text-[15px] uppercase text-black/50 ">
                     VAT(INCLUDED)
                   </p>
-                  <p className="text-[18px] font-bold ">$ 1,079</p>
+                  <p className="text-[18px] font-bold ">$ {vatFee}</p>
                 </div>
                 <div className="flex items-center justify-between">
                   <p className="text-[15px] uppercase text-black/50 ">
                     GRAND TOTAL
                   </p>
                   <p className="text-[18px] font-bold text-[#D87D4A] ">
-                    $ 5,446
+                    $ {grandTotal}
                   </p>
                 </div>
               </div>
