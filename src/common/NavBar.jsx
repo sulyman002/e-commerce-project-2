@@ -6,6 +6,7 @@ import { IoMdClose } from "react-icons/io"; // Import the close icon from react-
 import HeroSection from "../layouts/HeroSection";
 import { useEffect } from "react";
 import Cart from "./Cart";
+import { getItem, setItem } from "../utils/useLocalStoragepersist";
 
 const NavBar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -34,15 +35,31 @@ const NavBar = () => {
     setIsNavOpen(!isNavOpen);
   }
 
-  const [count, setCount] = useState(1);
+const [count, setCount] = useState(() => {
+    const item = getItem("count");
+    return item ? item : {};
+  });
+   useEffect(() => {
+      setItem("count", count);
+    }, [count]);
 
-  function handleIncrement() {
-    setCount(count + 1);
+   function handleIncrement(id) {
+    setCount((prev) => ({
+      ...prev,
+      [id]: (Number(prev[id]) || 1) + 1,
+    }));
   }
-  function handleDecrement() {
-    if (count > 1) {
-      setCount(count - 1);
-    }
+  function handleDecrement(id) {
+    setCount((prev) => {
+      const current = Number(prev[id]) || 1;
+      if (current > 1) {
+        return {
+          ...prev,
+          [id]: current - 1,
+        };
+      }
+      return prev;
+    });
   }
   return (
     <div className="bg-[#101010] text-white ">
