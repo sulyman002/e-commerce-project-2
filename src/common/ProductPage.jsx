@@ -46,11 +46,11 @@ const ProductPage = () => {
 
   useEffect(() => {
     try {
-      fetch("../../products.json")
+      fetch("../../allData.json")
         .then((res) => res.json())
         .then((data) => {
           // setGrabData(data);
-          const findId = data.find((item) => item.id === parseInt(id));
+          const findId = data[0].find((item) => item.id === parseInt(id));
           setProduct(findId);
         });
     } catch (error) {

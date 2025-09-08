@@ -11,11 +11,11 @@ const HeadphonesCategory = () => {
 
   useEffect(() => {
     try {
-      fetch("/products.json")
+      fetch("/allData.json")
         .then((res) => res.json())  
         .then((data) => {
           console.log(data);
-          setProducts(data);
+          setProducts(data[0]);
         });
     } catch (error) {
       console.error("Error fetching products:", error);

@@ -9,13 +9,40 @@ const SpeakerDisplayPage = () => {
   const { id } = useParams();
   const [speaker, setSpeaker] = useState({});
   const [count, setCount] = useState(() => {
-    const item = getItem('count');
+    const item = getItem("count");
     return item ? item : {};
   });
+
+  const [newArray, setNewArray] = useState(() => {
+    const cartItems = getItem("newArray");
+    return Array.isArray(cartItems) ? cartItems : [];
+  });
+
+  useEffect(() => {
+    setItem("newArray", newArray);
+  }, [newArray]);
 
   useEffect(() => {
     setItem("count", count);
   }, [count]);
+
+  function handleAddToCartClicked(speaker) {
+    setNewArray((prevData) => {
+      const exists = prevData.find((item) => item.id === speaker.id);
+      console.log(exists);
+      if (exists) {
+        console.log("Already in cart:", exists);
+        return prevData;
+      } else {
+        const updated = [...prevData, speaker];
+        console.log("New Cart ", updated);
+        const length = updated.length;
+        console.log("you currently stored :", length);
+
+        return updated;
+      }
+    });
+  }
 
   function handleIncrement(id) {
     setCount((prev) => ({
@@ -23,7 +50,6 @@ const SpeakerDisplayPage = () => {
       [id]: (Number(prev[id]) || 1) + 1,
     }));
   }
- 
 
   function handleDecrement(id) {
     setCount((prev) => {
@@ -40,14 +66,14 @@ const SpeakerDisplayPage = () => {
 
   useEffect(() => {
     try {
-      fetch("../../speakers.json")
+      fetch("../../allData.json")
         .then((res) => res.json())
         .then((data) => {
-          const findId = data.find((item) => item.id === parseInt(id));
+          const findId = data[1].find((item) => item.id === parseInt(id));
           setSpeaker(findId);
         });
     } catch (error) {
-      console.error("Error fetching product:", error);
+      console.error("Error fetching speaker:", error);
     }
   }, [id]);
 
@@ -97,7 +123,7 @@ const SpeakerDisplayPage = () => {
                   </div>
                 </div>
                 <Link to="#">
-                  <button className="bg-[#D87D4A] text-sm tracking-[1px] cursor-pointer font-bold  text-white w-[160px] py-4 uppercase hover:bg-[#FBAF85]">
+                  <button onClick={() => handleAddToCartClicked(speaker)} className="bg-[#D87D4A] text-sm tracking-[1px] cursor-pointer font-bold  text-white w-[160px] py-4 uppercase hover:bg-[#FBAF85]">
                     ADD TO CART
                   </button>
                 </Link>

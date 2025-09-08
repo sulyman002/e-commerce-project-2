@@ -1,0 +1,248 @@
+[
+  [
+    {
+      "id": 1,
+      "title": "XX99 Mark II Headphones",
+      "description": "The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.",
+      "price": 2999,
+      "image": "/headphones/headphone1.png",
+      "new": true,
+      "reverse": false,
+      "features": [
+        "The advanced Active Noise Cancellation with built-in equalizer allows you to experience your audio world on your terms. Best in class comfort and build, they’re designed to last. The XX99 Mark II headphones give you superior sound, cutting-edge technology, and a modern design aesthetic.",
+        "Featuring a genuine leather head strap and premium earcups, these headphones deliver superior comfort for those who like to enjoy endless listening. It includes intuitive controls designed for your convenience, so you can pause music to take calls or skip tracks with ease."
+      ],
+      "inTheBox": [
+        {
+          "quantity": 1,
+          "item": "Headphone Unit"
+        },
+        {
+          "quantity": 2,
+          "item": "Replacement Earcups"
+        },
+        {
+          "quantity": 1,
+          "item": "User Manual"
+        },
+        {
+          "quantity": 1,
+          "item": "3.5mm Audio Cable"
+        },
+        {
+          "quantity": 1,
+          "item": "Travel Bag"
+        }
+      ],
+      "gallery": [
+        "/audio1/audio1.png",
+        "/audio1/audio2.png",
+        "/audio1/audio3.png"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "XX98 Mark I Headphones",
+      "description": "As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike in studios and on the go.",
+      "price": 1750,
+      "image": "/headphones/headphone2.png",
+      "new": false,
+      "reverse": true,
+      "features": [
+        "The advanced Active Noise Cancellation with built-in equalizer allows you to experience your audio world on your terms. Best in class comfort and build, they’re designed to last. The XX99 Mark II headphones give you superior sound, cutting-edge technology, and a modern design aesthetic.",
+        "Featuring a genuine leather head strap and premium earcups, these headphones deliver superior comfort for those who like to enjoy endless listening. It includes intuitive controls designed for your convenience, so you can pause music to take calls or skip tracks with ease."
+      ],
+      "inTheBox": [
+        {
+          "quantity": 1,
+          "item": "Headphone Unit"
+        },
+        {
+          "quantity": 2,
+          "item": "Replacement Earcups"
+        },
+        {
+          "quantity": 1,
+          "item": "User Manual"
+        },
+        {
+          "quantity": 1,
+          "item": "3.5mm Audio Cable"
+        },
+        {
+          "quantity": 1,
+          "item": "Travel Bag"
+        }
+      ],
+      "gallery": [
+        "/audio2/audio1.png",
+        "/audio2/audio2.png",
+        "/audio2/audio3.png"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "XX59 Headphones",
+      "description": "Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. This stylish yet durable versatile wireless headset is a brilliant companion at home or on the move.",
+      "price": 899,
+      "image": "/headphones/headphone3.png",
+      "new": false,
+      "reverse": false,
+      "features": [
+        "The advanced Active Noise Cancellation with built-in equalizer allows you to experience your audio world on your terms. Best in class comfort and build, they’re designed to last. The XX99 Mark II headphones give you superior sound, cutting-edge technology, and a modern design aesthetic.",
+        "Featuring a genuine leather head strap and premium earcups, these headphones deliver superior comfort for those who like to enjoy endless listening. It includes intuitive controls designed for your convenience, so you can pause music to take calls or skip tracks with ease."
+      ],
+      "inTheBox": [
+        {
+          "quantity": 1,
+          "item": "Headphone Unit"
+        },
+        {
+          "quantity": 2,
+          "item": "Replacement Earcups"
+        },
+        {
+          "quantity": 1,
+          "item": "User Manual"
+        },
+        {
+          "quantity": 1,
+          "item": "3.5mm Audio Cable"
+        },
+        {
+          "quantity": 1,
+          "item": "Travel Bag"
+        }
+      ],
+      "gallery": [
+        "/audio3/audio1.png",
+        "/audio3/audio2.png",
+        "/audio3/audio3.png"
+      ]
+    }
+  ],
+  [
+    {
+      "id": 4,
+      "title": "ZX9 SPEAKER",
+      "description": "Upgrade your sound system with the all new ZX9 active speaker. It’s a bookshelf speaker system that offers truly wireless connectivity -- creating new possibilities for more pleasing and practical audio setups.",
+      "price": 4500,
+      "image": "/speakers/speaker1.png",
+      "new": true,
+      "reverse": false,
+      "features": [
+        "Connect via Bluetooth or nearly any wired source. This speaker features optical, digital coaxial, USB Type-B, stereo RCA, and stereo XLR inputs, allowing you to have up to five wired source devices connected for easy switching. Improved bluetooth technology offers near lossless audio quality at up to 328ft (100m).",
+        "Discover clear, more natural sounding highs than the competition with ZX9’s signature planar diaphragm tweeter. Equally important is its powerful room-shaking bass courtesy of a 6.5” aluminum alloy bass unit. You’ll be able to enjoy equal sound quality whether in a large room or small den. Furthermore, you will experience new sensations from old songs since it can respond to even the subtle waveforms."
+      ],
+      "inTheBox": [
+        {
+          "quantity": 2,
+          "item": "Speaker Unit"
+        },
+        {
+          "quantity": 2,
+          "item": "Speaker Cloth Panel"
+        },
+        {
+          "quantity": 1,
+          "item": "User Manual"
+        },
+        {
+          "quantity": 1,
+          "item": "3.5mm 10m Audio Cable"
+        },
+        {
+          "quantity": 1,
+          "item": "10m Optical Cable"
+        }
+      ],
+      "gallery": [
+        "/speaker1/speaker1.png",
+        "/speaker1/speaker2.png",
+        "/speaker1/speaker3.png"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "ZX7 SPEAKER",
+      "description": "Stream high quality sound wirelessly with minimal loss. The ZX7 bookshelf speaker uses high-end audiophile components that represents the top of the line powered speakers for home or studio use..",
+      "price": 3500,
+      "image": "/speakers/speaker2.png",
+      "new": false,
+      "reverse": true,
+      "features": [
+        "Reap the advantages of a flat diaphragm tweeter cone. This provides a fast response rate and excellent high frequencies that lower tiered bookshelf speakers cannot provide. The woofers are made from aluminum that produces a unique and clear sound. XLR inputs allow you to connect to a mixer for more advanced usage.",
+        "The ZX7 speaker is the perfect blend of stylish design and high performance. It houses an encased MDF wooden enclosure which minimizes acoustic resonance. Dual connectivity allows pairing through bluetooth or traditional optical and RCA input. Switch input sources and control volume at your finger tips with the included wireless remote. This versatile speaker is equipped to deliver an authentic listening experience."
+      ],
+      "inTheBox": [
+        {
+          "quantity": 2,
+          "item": "Speaker Unit"
+        },
+        {
+          "quantity": 2,
+          "item": "Speaker Cloth Panel"
+        },
+        {
+          "quantity": 1,
+          "item": "User Manual"
+        },
+        {
+          "quantity": 1,
+          "item": "3.5mm 10m Audio Cable"
+        },
+        {
+          "quantity": 1,
+          "item": "10m Optical Cable"
+        }
+      ],
+      "gallery": [
+        "/speaker2/speaker1.png",
+        "/speaker2/speaker2.png",
+        "/speaker2/speaker3.png"
+      ]
+    }
+  ],
+  [
+    {
+      "id": 6,
+      "title": "YX1 WIRELESS EARPHONES",
+      "description": "Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.",
+      "price": 599,
+      "image": "/earphones/earphone.png",
+      "new": true,
+      "reverse": false,
+      "features": [
+        "Connect via Bluetooth or nearly any wired source. This speaker features optical, digital coaxial, USB Type-B, stereo RCA, and stereo XLR inputs, allowing you to have up to five wired source devices connected for easy switching. Improved bluetooth technology offers near lossless audio quality at up to 328ft (100m).",
+        "Discover clear, more natural sounding highs than the competition with ZX9’s signature planar diaphragm tweeter. Equally important is its powerful room-shaking bass courtesy of a 6.5” aluminum alloy bass unit. You’ll be able to enjoy equal sound quality whether in a large room or small den. Furthermore, you will experience new sensations from old songs since it can respond to even the subtle waveforms."
+      ],
+      "inTheBox": [
+        {
+          "quantity": 2,
+          "item": "Speaker Unit"
+        },
+        {
+          "quantity": 2,
+          "item": "Speaker Cloth Panel"
+        },
+        {
+          "quantity": 1,
+          "item": "User Manual"
+        },
+        {
+          "quantity": 1,
+          "item": "3.5mm 10m Audio Cable"
+        },
+        {
+          "quantity": 1,
+          "item": "10m Optical Cable"
+        }
+      ],
+      "gallery": [
+        "/wireless1/wireless1.png",
+        "/wireless1/wireless2.png",
+        "/wireless1/wireless3.png"
+      ]
+    }
+  ]
+]

@@ -11,11 +11,11 @@ const EarphonesCategory = () => {
 
   useEffect(() => {
     try {
-      fetch("/earphones.json")
+      fetch("/allData.json")
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          setEarphones(data);
+          setEarphones(data[2]);
         });
     } catch (error) {
       console.error("Error fetching earphone:", error);

@@ -11,11 +11,11 @@ const SpeakersCategory = () => {
 
   useEffect(() => {
     try {
-      fetch("/speakers.json")
+      fetch("/allData.json")
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          setSpeakers(data);
+          setSpeakers(data[1]);
         });
     } catch (error) {
       console.error("Error fetching speaker:", error);

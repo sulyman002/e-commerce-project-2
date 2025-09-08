@@ -13,6 +13,37 @@ const EarphoneDisplayPage = () => {
     return item ? item : {};
   });
 
+  const [newArray, setNewArray] = useState(() => {
+    const cartItems = getItem("newArray");
+    return Array.isArray(cartItems) ? cartItems : [];
+  });
+
+  useEffect(() => {
+    setItem("newArray", newArray);
+  }, [newArray]);
+
+  useEffect(() => {
+    setItem("count", count);
+  }, [count]);
+
+  function handleAddToCartClicked(earphone) {
+    setNewArray((prevData) => {
+      const exists = prevData.find((item) => item.id === earphone.id);
+      console.log(exists);
+      if (exists) {
+        console.log("Already in cart:", exists);
+        return prevData;
+      } else {
+        const updated = [...prevData, earphone];
+        console.log("New Cart ", updated);
+        const length = updated.length;
+        console.log("you currently stored :", length);
+
+        return updated;
+      }
+    });
+  }
+
   useEffect(() => {
     setItem("count", count);
   }, [count]);
@@ -39,10 +70,10 @@ const EarphoneDisplayPage = () => {
 
   useEffect(() => {
     try {
-      fetch("../../earphones.json")
+      fetch("../../allData.json")
         .then((res) => res.json())
         .then((data) => {
-          const findId = data.find((item) => item.id === parseInt(id));
+          const findId = data[2].find((item) => item.id === parseInt(id));
           setEarphone(findId);
         });
     } catch (error) {
@@ -87,16 +118,22 @@ const EarphoneDisplayPage = () => {
 
               <div className="flex justify-center items-start mt-8 flex-row gap-4">
                 <div className="flex font-bold text-sm py-4 items-center justify-evenly gap-4 w-[120px] bg-[#F1F1F1] ">
-                  <div onClick={() => handleDecrement(earphone.id)} className="text-black/70">
+                  <div
+                    onClick={() => handleDecrement(earphone.id)}
+                    className="text-black/70"
+                  >
                     -
                   </div>
                   <div className="">{count[earphone.id] || 1}</div>
-                  <div onClick={() => handleIncrement(earphone.id)} className="text-black/70">
+                  <div
+                    onClick={() => handleIncrement(earphone.id)}
+                    className="text-black/70"
+                  >
                     +
                   </div>
                 </div>
                 <Link to="#">
-                  <button className="bg-[#D87D4A] text-sm tracking-[1px] cursor-pointer font-bold  text-white w-[160px] py-4 uppercase hover:bg-[#FBAF85]">
+                  <button onClick={() => handleAddToCartClicked(earphone)} className="bg-[#D87D4A] text-sm tracking-[1px] cursor-pointer font-bold  text-white w-[160px] py-4 uppercase hover:bg-[#FBAF85]">
                     ADD TO CART
                   </button>
                 </Link>
