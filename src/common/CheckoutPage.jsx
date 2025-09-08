@@ -30,15 +30,26 @@ const CheckoutPage = () => {
 
   const [payment, setPayment] = useState(false);
 
-  const [count, setCount] = useState(() => {
-    const storedCount = getItem("count");
-    return storedCount ? storedCount : {};
-  });
+  // const [count, setCount] = useState(() => {
+  //   const storedCount = getItem("count");
+  //   return storedCount ? storedCount : {};
+  // });
 
-  useEffect(() => {
-    setItem("count", count);
-  }, [count]);
+  // useEffect(() => {
+  //   setItem("count", count);
+  // }, [count]);
 
+
+    const [count, setCount] = useState(() => {
+      const storedCount = getItem("count");
+      return storedCount ? storedCount : {};
+    });
+  
+    useEffect(() => {
+      setItem("count", count);
+    }, [count]);
+  
+    
   function handlePayment() {
     setPayment(!payment);
     console.log("you clicked on the payment button");
@@ -55,6 +66,17 @@ const CheckoutPage = () => {
       setCartItems(storedItems);
     }
   }, []);
+
+  const getTotal = cartItems.reduce((prev, item) => {
+       const qty = count[item.id] || 1;
+    return prev + item.price * qty
+  },0)
+
+  const shippingFee = cartItems.reduce((prev, item) =>{
+    const shippingQuantity = count[item.id] || 1;
+    const percent = item.price * 0.05;
+    return prev + percent *
+  },0)
 
   return (
     <div className="bg-gray-100">
@@ -303,7 +325,37 @@ const CheckoutPage = () => {
                 {/* here, we going to use .map() method to display 
               the data we get from the cart as summary, but for now, 
               let work with random data i will just fetch a random data for now */}
-                {cartItems.length === 0 ? (
+
+                {cartItems.map((cartItem) => (
+                  <div
+                    className="flex items-center justify-between gap-2"
+                    key={cartItem.id}
+                  >
+                    <div className="flex gap-2">
+                      <div className="h-[64px] w-[64px] bg-[#F1F1F1] rounded flex items-center justify-center ">
+                        <img
+                          src={cartItem.image}
+                          alt=""
+                          className=" h-[40px] rounded "
+                        />
+                      </div>
+                      <div className="flex flex-col items-start justify-start gap-[2px] w-[76px] overflow-x-auto">
+                        <h2 className="text-[15px] font-bold whitespace-nowrap ">
+                          {cartItem.title}
+                        </h2>
+                        <p className="text-sm font-bold text-black/50 ">
+                          $ {cartItem.price}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex font-bold text-sm py-4 items-center justify-evenly gap-4   ">
+                     
+                      <div className="">X{count[cartItem.id] || 1}</div>
+                      
+                    </div>
+                  </div>
+                ))}
+                {/* {cartItems.length === 0 ? (
                   <div className="flex text-black flex-col gap-4 mt-3 h-1/2 overflow-y-auto bg-gray-200 py-3 px-3 mx-6 rounded-md">
                     <p className="text-red-500 font-bold text-1xl italic flex items-center justify-center h-full w-full text-center ">
                       No items yet
@@ -330,15 +382,15 @@ const CheckoutPage = () => {
                         </div>
                       </div>
 
-                      <p className="text-sm font-bold text-black/50 ">X1</p>
+                      <p className="text-sm font-bold text-black/50 ">X{count[cartItem.id] || 1}</p>
                     </div>
                   ))
-                )}
+                )} */}
               </div>
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between">
                   <p className="text-[15px] uppercase text-black/50 ">TOTAL</p>
-                  <p className="text-[18px] font-bold ">$ 5,396</p>
+                  <p className="text-[18px] font-bold ">$ {getTotal}</p>
                 </div>
                 <div className="flex items-center justify-between">
                   <p className="text-[15px] uppercase text-black/50 ">

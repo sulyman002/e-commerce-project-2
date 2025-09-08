@@ -88,8 +88,9 @@ const [count, setCount] = useState(() => {
             </Link>
           </div>
 
-          <div onClick={handleCartClicked}>
+          <div onClick={handleCartClicked} className="relative">
             <img src={cart} alt="cart" />
+            <div className="absolute"></div>
           </div>
         </nav>
         {/* mobile Nav Content */}
