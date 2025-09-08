@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { IoMdClose } from "react-icons/io"; // Import the close icon from react-icons
 import CartContent from "./CartContent";
+import { getItem } from "../utils/useLocalStoragepersist";
 
 const Cart = ({
   cartData,
@@ -10,6 +11,22 @@ const Cart = ({
   handleCartClicked,
   count,
 }) => {
+  
+
+    const [cartItems, setCartItems] = useState([]);
+
+    useEffect(() => {
+      const storedItems = getItem("newArray");
+
+      if(storedItems) {
+        setCartItems(storedItems);
+      }
+    
+
+    }, [])
+    
+  
+  
   return (
     <div className="fixed bg-black/60 inset-0 z-10">
       <div className="flex justify-center md:justify-end md:items-start md:mt-20 md:mr-40 items-center h-full px-4">
@@ -22,13 +39,14 @@ const Cart = ({
           </button>
           <div>
             <div className="flex justify-between items-center px-6">
-              <h2 className="text-[18px] font-bold text-black ">Cart (3)</h2>
+              <h2 className="text-[18px] font-bold text-black ">Cart {cartItems.length}</h2>
               <div className="underline text-black/70 text-[15px] cursor-pointer ">
                 Remove all
               </div>
             </div>
           </div>
           <CartContent
+            cartItems={cartItems}
             cartData={cartData}
             handleIncrement={handleIncrement}
             handleDecrement={handleDecrement}

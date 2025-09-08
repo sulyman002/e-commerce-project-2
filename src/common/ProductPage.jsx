@@ -15,7 +15,6 @@ const ProductPage = () => {
   const [newArray, setNewArray] = useState(() => {
     const cartItems = getItem("newArray");
     return Array.isArray(cartItems) ? cartItems : [];
-    
   });
 
   useEffect(() => {
@@ -69,6 +68,9 @@ const ProductPage = () => {
       } else {
         const updated = [...prevData, product];
         console.log("New Cart ", updated);
+        const length = updated.length;
+        console.log("you currently stored :", length);
+
         return updated;
       }
     });
