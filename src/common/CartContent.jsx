@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { setItem, getItem } from "../utils/useLocalStoragepersist";
+import { FaShoppingCart } from "react-icons/fa";
+
 
 const CartContent = ({ cartItems }) => {
 
@@ -32,20 +34,16 @@ const CartContent = ({ cartItems }) => {
     const qty = count[item.id] || 1;
     return sum + item.price * qty;
   }, 0);
-  // }
 
-  //      function clearCart() {
-  //   setCartItems([]);
-  //   setCount({});
-  //   localStorage.removeItem("newArray");
-  //   localStorage.removeItem("count");
-  // }
 
   return (
     <>
       {cartItems.length === 0 ? (
         <div className="flex text-black flex-col gap-4 mt-3 h-1/2 overflow-y-auto bg-gray-200 py-3 px-3 mx-6 rounded-md">
-          <p className="text-red-500 font-bold text-1xl italic flex items-center justify-center h-full w-full text-center ">
+          <p className="text-gray-700 font-bold text-1xl italic flex-col gap-3 flex items-center justify-center h-full w-full text-center ">
+            <div>
+              <FaShoppingCart className="w-50 h-10 " />
+            </div>
             No items yet
           </p>
         </div>

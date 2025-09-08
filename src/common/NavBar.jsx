@@ -14,6 +14,7 @@ const NavBar = () => {
   const [cartDisplay, setCartdisplay] = useState(false);
   const [cartData, setCartData] = useState(null);
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     fetch("/earphones.json")
@@ -62,14 +63,20 @@ const NavBar = () => {
     });
   }
 
-  const [newArray, setNewArray] = useState(() => {
-    const cartItems = getItem("newArray");
-    return Array.isArray(cartItems) ? cartItems : [];
-  });
+  
 
-  useEffect(() => {
-    setItem("newArray", newArray);
-  }, [newArray]);
+
+
+  const [cartItems, setCartItems] = useState([]);
+  
+      useEffect(() => {
+        const storedItems = getItem("newArray");
+  
+        if(storedItems) {
+          setCartItems(storedItems);
+        }
+      }, [])
+
   return (
     <div className="bg-[#101010] text-white ">
       <div className="relative container mx-auto">
@@ -100,7 +107,7 @@ const NavBar = () => {
           <div onClick={handleCartClicked} className="relative">
             <img src={cart} alt="cart" />
             <div className="absolute text-white top-[-4px] right-[-4px] text-[7px] font-semibold w-[12px] h-[12px] rounded-full bg-red-600 flex items-center justify-center">
-              {newArray.length}
+              {cartItems.length}
             </div>
           </div>
         </nav>

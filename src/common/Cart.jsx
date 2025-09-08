@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { IoMdClose } from "react-icons/io"; // Import the close icon from react-icons
 import CartContent from "./CartContent";
-import { getItem } from "../utils/useLocalStoragepersist";
+import { getItem, removeItem } from "../utils/useLocalStoragepersist";
 
 const Cart = ({
   cartData,
@@ -21,14 +21,15 @@ const Cart = ({
       if(storedItems) {
         setCartItems(storedItems);
       }
-    
-
     }, [])
 
+  function handleClearLocalStorage() {
+    removeItem("newArray");
+    setCartItems([]);
+
+  }
+
    
-    
- 
-  
   
   return (
     <div className="fixed bg-black/60 inset-0 z-10">
@@ -42,8 +43,11 @@ const Cart = ({
           </button>
           <div>
             <div className="flex justify-between items-center px-6">
-              <h2 className="text-[18px] font-bold text-black ">Cart {cartItems.length}</h2>
-              <div  className="underline text-black/70 text-[15px] cursor-pointer ">
+              <h2 className="text-[18px] font-bold text-black ">Cart ({cartItems.length})</h2>
+              <div onClick={() => {
+                console.log("you sure you want to remove all?");
+                handleClearLocalStorage();
+              }} className="underline text-black/70 text-[15px] cursor-pointer ">
                 Remove all
               </div>
             </div>
@@ -59,7 +63,17 @@ const Cart = ({
           />
 
           
-          <div className="px-6 items-center w-full">
+          {cartItems.length === 0 ? (<div className="px-6 items-center w-full">
+            <button
+              onClick={() => {
+                navigate("/");
+                handleCartClicked();
+              }}
+              className="bg-black w-full text-white p-4 hover:bg-black/70 mb-4"
+            >
+              Go to Shop
+            </button>
+          </div>) : (<div className="px-6 items-center w-full">
             <button
               onClick={() => {
                 navigate("checkout");
@@ -69,7 +83,7 @@ const Cart = ({
             >
               Checkout
             </button>
-          </div>
+          </div>) }
         </div>
       </div>
     </div>
@@ -77,3 +91,6 @@ const Cart = ({
 };
 
 export default Cart;
+
+
+

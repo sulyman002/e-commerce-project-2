@@ -18,9 +18,9 @@ export function getItem(key) {
 
 export function removeItem(key) {
     try {
-        const resp = window.localStorage.removeItem(key);
-        if(resp) return true
-        return false;
+         window.localStorage.removeItem(key);
+         return true
+
     } catch (error) {
         console.error(`the error is ${error}`);
     }
