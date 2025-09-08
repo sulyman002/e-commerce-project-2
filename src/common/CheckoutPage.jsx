@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import SellProductBtn from "../components/SellProductBtn";
-import success_mark from "../assets/desktop_home/success_mark.svg"
+import success_mark from "../assets/desktop_home/success_mark.svg";
+import { getItem, setItem } from "../utils/useLocalStoragepersist";
 
 const CheckoutPage = () => {
   const [updateInputs, setUpdateInput] = useState({
@@ -26,18 +27,17 @@ const CheckoutPage = () => {
       [name]: value,
     }));
   }
-  const [summaryData, setSummaryData] = useState(null);
-
-  useEffect(() => {
-    fetch("/earphones.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setSummaryData(data?.[0]);
-        console.log(data?.[0]);
-      });
-  }, []);
 
   const [payment, setPayment] = useState(false);
+
+  const [count, setCount] = useState(() => {
+    const storedCount = getItem("count");
+    return storedCount ? storedCount : {};
+  });
+
+  useEffect(() => {
+    setItem("count", count);
+  }, [count]);
 
   function handlePayment() {
     setPayment(!payment);
@@ -45,6 +45,16 @@ const CheckoutPage = () => {
   }
 
   const navigate = useNavigate();
+
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    const storedItems = getItem("newArray");
+
+    if (storedItems) {
+      setCartItems(storedItems);
+    }
+  }, []);
 
   return (
     <div className="bg-gray-100">
@@ -293,50 +303,37 @@ const CheckoutPage = () => {
                 {/* here, we going to use .map() method to display 
               the data we get from the cart as summary, but for now, 
               let work with random data i will just fetch a random data for now */}
-
-                <div className="flex items-center justify-between">
-                  <div className="flex gap-2">
-                    <div className="h-[64px] w-[64px] bg-[#F1F1F1] rounded flex items-center justify-center ">
-                      <img
-                        src={summaryData?.image}
-                        alt=""
-                        className=" h-[40px] rounded "
-                      />
-                    </div>
-                    <div className="flex flex-col items-start justify-start gap-[2px] w-[76px] md:w-[180px] overflow-x-auto">
-                      <h2 className="text-[15px] font-bold whitespace-nowrap ">
-                        {summaryData?.title}
-                      </h2>
-                      <p className="text-sm font-bold text-black/50 ">
-                        $ {summaryData?.price}
-                      </p>
-                    </div>
+                {cartItems.length === 0 ? (
+                  <div className="flex text-black flex-col gap-4 mt-3 h-1/2 overflow-y-auto bg-gray-200 py-3 px-3 mx-6 rounded-md">
+                    <p className="text-red-500 font-bold text-1xl italic flex items-center justify-center h-full w-full text-center ">
+                      No items yet
+                    </p>
                   </div>
+                ) : (
+                  cartItems.map((cartItem) => (
+                    <div className="flex items-center justify-between">
+                      <div className="flex gap-2">
+                        <div className="h-[64px] w-[64px] bg-[#F1F1F1] rounded flex items-center justify-center ">
+                          <img
+                            src={cartItem?.image}
+                            alt=""
+                            className=" h-[40px] rounded "
+                          />
+                        </div>
+                        <div className="flex flex-col items-start justify-start gap-[2px] w-[76px] md:w-[180px] overflow-x-auto">
+                          <h2 className="text-[15px] font-bold whitespace-nowrap ">
+                            {cartItem?.title}
+                          </h2>
+                          <p className="text-sm font-bold text-black/50 ">
+                            $ {cartItem?.price}
+                          </p>
+                        </div>
+                      </div>
 
-                  <p className="text-sm font-bold text-black/50 ">X1</p>
-                </div>
-                {/* second delete later */}
-                <div className="flex items-center justify-between">
-                  <div className="flex gap-2">
-                    <div className="h-[64px] w-[64px] bg-[#F1F1F1] rounded flex items-center justify-center ">
-                      <img
-                        src={summaryData?.image}
-                        alt=""
-                        className=" h-[40px] rounded "
-                      />
+                      <p className="text-sm font-bold text-black/50 ">X1</p>
                     </div>
-                    <div className="flex flex-col items-start justify-start gap-[2px] w-[76px] md:w-[180px] overflow-x-auto">
-                      <h2 className="text-[15px] font-bold whitespace-nowrap ">
-                        {summaryData?.title}
-                      </h2>
-                      <p className="text-sm font-bold text-black/50 ">
-                        $ {summaryData?.price}
-                      </p>
-                    </div>
-                  </div>
-
-                  <p className="text-sm font-bold text-black/50 ">X1</p>
-                </div>
+                  ))
+                )}
               </div>
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between">
@@ -373,21 +370,30 @@ const CheckoutPage = () => {
                 <div className="fixed bg-black/60 inset-0 z-10">
                   <div className="flex justify-center items-center h-full px-4">
                     <div className="flex flex-col w-full mx-6 md:w-[600px] h- bg-white rounded-lg p-8">
-                        <div className="flex flex-col gap-5">
-                            <div className="w-[64px] h-[64px] rounded-full bg-[#D87D4A] flex items-center justify-center "> <img src={success_mark} alt="success" /></div>
-                            <h2 className="text-[24px] font-bold leading-[28px] tracking-[0.86px] w-[260px] text-balance overflow-hidden">THANK YOU FOR YOUR ORDER</h2>
-                            <p className="text-black/50 text-[15px] ">You will receive an email confirmation shortly.</p>
+                      <div className="flex flex-col gap-5">
+                        <div className="w-[64px] h-[64px] rounded-full bg-[#D87D4A] flex items-center justify-center ">
+                          {" "}
+                          <img src={success_mark} alt="success" />
                         </div>
-                        <div className="text-red-500 font-bold capitalize italic h-[200px] flex items-center justify-center">
-                            No order!!!
-                        </div>
+                        <h2 className="text-[24px] font-bold leading-[28px] tracking-[0.86px] w-[260px] text-balance overflow-hidden">
+                          THANK YOU FOR YOUR ORDER
+                        </h2>
+                        <p className="text-black/50 text-[15px] ">
+                          You will receive an email confirmation shortly.
+                        </p>
+                      </div>
+                      <div className="text-red-500 font-bold capitalize italic h-[200px] flex items-center justify-center">
+                        No order!!!
+                      </div>
 
-                        <SellProductBtn onClick={() => {
-                            navigate("/");
-                            window.scrollTo({top: 0, behavior: "smooth"});
-                        }}>
-                            Back to Home
-                        </SellProductBtn>
+                      <SellProductBtn
+                        onClick={() => {
+                          navigate("/");
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                      >
+                        Back to Home
+                      </SellProductBtn>
                     </div>
                   </div>
                 </div>

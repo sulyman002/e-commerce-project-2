@@ -27,7 +27,7 @@ const Cart = ({
 
    
     
-    
+ 
   
   
   return (
@@ -43,13 +43,14 @@ const Cart = ({
           <div>
             <div className="flex justify-between items-center px-6">
               <h2 className="text-[18px] font-bold text-black ">Cart {cartItems.length}</h2>
-              <div className="underline text-black/70 text-[15px] cursor-pointer ">
+              <div  className="underline text-black/70 text-[15px] cursor-pointer ">
                 Remove all
               </div>
             </div>
           </div>
           <CartContent
             cartItems={cartItems}
+            setCartItems = {setCartItems}
           
             cartData={cartData}
             handleIncrement={handleIncrement}
@@ -57,10 +58,7 @@ const Cart = ({
             count={count}
           />
 
-          <div className="py-4 px-6 flex justify-between items-center">
-            <h2 className="text-[15px] font-bold text-black/50 ">Total</h2>
-            <h2 className="text-[20px] font-bold text-black ">$5,000</h2>
-          </div>
+          
           <div className="px-6 items-center w-full">
             <button
               onClick={() => {
