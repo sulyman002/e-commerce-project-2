@@ -24,13 +24,16 @@ const Cart = ({
     
 
     }, [])
+
+   
+    
     
   
   
   return (
     <div className="fixed bg-black/60 inset-0 z-10">
       <div className="flex justify-center md:justify-end md:items-start md:mt-20 md:mr-40 items-center h-full px-4">
-        <div className="w-full mx-6 md:w-[377px] h-[488px] bg-white rounded-lg">
+        <div className="w-full mx-6 md:w-[377px] h-auto bg-white rounded-lg">
           <button
             onClick={handleCartClicked}
             className="flex justify-end w-full p-4 cursor-pointer"
@@ -47,6 +50,7 @@ const Cart = ({
           </div>
           <CartContent
             cartItems={cartItems}
+          
             cartData={cartData}
             handleIncrement={handleIncrement}
             handleDecrement={handleDecrement}
