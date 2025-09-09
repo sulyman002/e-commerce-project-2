@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import SellProductBtn from "../components/SellProductBtn";
 import success_mark from "../assets/desktop_home/success_mark.svg";
-import { getItem, setItem } from "../utils/useLocalStoragepersist";
+import { getItem, removeItem, setItem } from "../utils/useLocalStoragepersist";
 import { toast } from "sonner";
 
 const CheckoutPage = () => {
@@ -62,9 +62,8 @@ const CheckoutPage = () => {
     if (updateInputs.eMoneyPin.length === 0) {
       isError.eMoneyPin = "This field is required";
     }
-    if(updateInputs.payment.valueOf("e-Money")){
-       isError.payment = "This field is required";
-
+    if (updateInputs.payment.valueOf("e-Money")) {
+      isError.payment = "This field is required";
     }
 
     return isError;
@@ -130,6 +129,11 @@ const CheckoutPage = () => {
   }, 0);
 
   const grandTotal = getTotal + shippingFee + vatFee;
+  function handleClearLocalStorage() {
+      removeItem("newArray");
+      setCartItems([]);
+  
+    }
 
   return (
     <div className="bg-gray-100">
@@ -499,13 +503,53 @@ const CheckoutPage = () => {
                           You will receive an email confirmation shortly.
                         </p>
                       </div>
-                      <div className="text-red-500 font-bold capitalize italic h-[200px] flex items-center justify-center">
-                        No order!!!
+                      <div className="text-red-500 font-bold capitalize italic flex-col mt-3 flex items-center justify-center">
+                        <div className="flex w-full rounded-t-lg bg-gray-200 py-8 px-4">
+                          {cartItems.map((cartItem) => (
+                            <div
+                              className="flex items-center justify-between w-full gap-2"
+                              key={cartItem.id}
+                            >
+                              <div className="flex gap-2">
+                                <div className="h-[64px] w-[64px] bg-[#F1F1F1] rounded flex items-center justify-center ">
+                                  <img
+                                    src={cartItem.image}
+                                    alt=""
+                                    className=" h-[40px] rounded "
+                                  />
+                                </div>
+                                <div className="flex flex-col items-start justify-start gap-[2px]  overflow-x-auto">
+                                  <h2 className="text-[15px] font-bold whitespace-nowrap ">
+                                    {cartItem.title}
+                                  </h2>
+                                  <p className="text-sm font-bold text-black/50 ">
+                                    $ {cartItem.price}
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="flex font-bold text-sm py-4 items-center justify-evenly gap-4   ">
+                                <div className="">
+                                  X{count[cartItem.id] || 1}
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="flex items-start gap-4 flex-col px-4 py-8 w-full rounded-b-lg bg-black">
+                          <p className="text-[15px] uppercase text-white ">
+                            GRAND TOTAL
+                          </p>
+                          <p className="text-[18px] font-bold text-white ">
+                            $ {grandTotal}
+                          </p>
+                        </div>
                       </div>
 
                       <SellProductBtn
                         onClick={() => {
                           navigate("/");
+                          handleClearLocalStorage();
+
                           window.scrollTo({ top: 0, behavior: "smooth" });
                         }}
                       >
