@@ -62,7 +62,7 @@ const ProductPage = () => {
   function handleAddToCartClicked(product) {
       setTimeout(() => {
       toast.success("Product added to cart")
-    }, 1000);
+    }, 200);
  
     setNewArray((prevData) => {
       const exists = prevData.find((item) => item.id === product.id);

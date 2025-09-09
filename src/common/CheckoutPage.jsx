@@ -80,7 +80,7 @@ const CheckoutPage = () => {
       updateInputs.zipCode.trim().length === 0 ||
       updateInputs.city.trim().length === 0
     ) {
-      toast.success("All field is required to be filled");
+      toast.success("All field are required to be filled");
       console.log("let see");
     } else {
       setPayment(!payment);

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import LikelyProduct from "./LikelyProduct";
 import { getItem, setItem } from "../utils/useLocalStoragepersist";
+import { toast } from "sonner";
 
 const EarphoneDisplayPage = () => {
   const { id } = useParams();
@@ -27,6 +28,10 @@ const EarphoneDisplayPage = () => {
   }, [count]);
 
   function handleAddToCartClicked(earphone) {
+
+     setTimeout(() => {
+      toast.success("Product added to cart")
+    }, 200);
     setNewArray((prevData) => {
       const exists = prevData.find((item) => item.id === earphone.id);
       console.log(exists);
