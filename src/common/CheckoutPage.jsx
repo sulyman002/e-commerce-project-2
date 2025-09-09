@@ -33,41 +33,71 @@ const CheckoutPage = () => {
 
   const [inputErrors, setInputErrors] = useState({});
 
-  function handleInputErrors () {
-    let isError = {}
-    if(updateInputs.name.length === 0) {
-      
-      isError.name = "This field is required"
-      
-    } 
+  function handleInputErrors() {
+    let isError = {};
+    if (updateInputs.name.length === 0) {
+      isError.name = "This field is required";
+    }
+    if (updateInputs.email.length === 0) {
+      isError.email = "This field is required";
+    }
+    if (updateInputs.phoneNumber.length === 0) {
+      isError.phoneNumber = "This field is required";
+    }
+    if (updateInputs.address.length === 0) {
+      isError.address = "This field is required";
+    }
+    if (updateInputs.zipCode.length === 0) {
+      isError.zipCode = "This field is required";
+    }
+    if (updateInputs.city.length === 0) {
+      isError.city = "This field is required";
+    }
+    if (updateInputs.country.length === 0) {
+      isError.country = "This field is required";
+    }
+    if (updateInputs.eMoney.length === 0) {
+      isError.eMoney = "This field is required";
+    }
+    if (updateInputs.eMoneyPin.length === 0) {
+      isError.eMoneyPin = "This field is required";
+    }
+    if(updateInputs.payment.valueOf("e-Money")){
+       isError.payment = "This field is required";
 
+    }
+
+    return isError;
   }
 
   function handlePayment() {
-    if(updateInputs.names && updateInputs.email && updateInputs.phoneNumber && updateInputs.address && updateInputs.zipCode && updateInputs.city && updateInputs.country ){
-      toast.error("This field is required")
-    } else{
-    setPayment(!payment);
+    const errorMessage = handleInputErrors();
+    setInputErrors(errorMessage);
+    if (
+      updateInputs.name.trim().length === 0 ||
+      updateInputs.email.trim().length === 0 ||
+      updateInputs.phoneNumber.trim().length === 0 ||
+      updateInputs.address.trim().length === 0 ||
+      updateInputs.zipCode.trim().length === 0 ||
+      updateInputs.city.trim().length === 0
+    ) {
+      toast.success("All field is required to be filled");
+      console.log("let see");
+    } else {
+      setPayment(!payment);
     }
-    
+
     console.log("you clicked on the payment button");
-    return isError
   }
 
+  const [count, setCount] = useState(() => {
+    const storedCount = getItem("count");
+    return storedCount ? storedCount : {};
+  });
 
-
-
-    const [count, setCount] = useState(() => {
-      const storedCount = getItem("count");
-      return storedCount ? storedCount : {};
-    });
-  
-    useEffect(() => {
-      setItem("count", count);
-    }, [count]);
-  
-    
-  
+  useEffect(() => {
+    setItem("count", count);
+  }, [count]);
 
   const navigate = useNavigate();
 
@@ -82,27 +112,24 @@ const CheckoutPage = () => {
   }, []);
 
   const getTotal = cartItems.reduce((prev, item) => {
-       const qty = count[item.id] || 1;
-    return prev + item.price * qty
-  },0)
+    const qty = count[item.id] || 1;
+    return prev + item.price * qty;
+  }, 0);
 
-  const shippingFee = cartItems.reduce((prev, item) =>{
+  const shippingFee = cartItems.reduce((prev, item) => {
     const shippingQuantity = count[item.id] || 1;
     const percent = item.price * 0.02;
     const theFees = Math.floor(prev + percent * shippingQuantity);
     return theFees;
-  },0)
+  }, 0);
 
   const vatFee = cartItems.reduce((prev, item) => {
     const productValue = item.price;
-    const vat = Math.floor((prev + productValue + shippingFee) * 0.075)
+    const vat = Math.floor((prev + productValue + shippingFee) * 0.075);
     return vat;
-  },0)
-
+  }, 0);
 
   const grandTotal = getTotal + shippingFee + vatFee;
-  
-
 
   return (
     <div className="bg-gray-100">
@@ -142,6 +169,11 @@ const CheckoutPage = () => {
                       placeholder="Alexei Ward"
                       className="h-[56px] rounded-[8px] w-full pl-3 font-bold text-[14px] text-black/80 border border-gray-200 outline-0"
                     />
+                    {inputErrors && (
+                      <p className="text-[10px] mt-1 italic font-bold text-red-700">
+                        {inputErrors.name}
+                      </p>
+                    )}
                   </div>
                   <div className="flex flex-col gap-2 mt-3">
                     <label
@@ -159,6 +191,11 @@ const CheckoutPage = () => {
                       placeholder="alexei@mail.com"
                       className="h-[56px] rounded-[8px] w-full pl-3 font-bold text-[14px] text-black/80 border border-gray-200 outline-0"
                     />
+                    {inputErrors && (
+                      <p className="text-[10px] mt-1 italic font-bold text-red-700">
+                        {inputErrors.email}
+                      </p>
+                    )}
                   </div>
                   <div className="flex flex-col gap-2 mt-3">
                     <label
@@ -176,6 +213,11 @@ const CheckoutPage = () => {
                       placeholder="+ 202-555-0136"
                       className="h-[56px] rounded-[8px] w-full pl-3 font-bold text-[14px] text-black/80 border border-gray-200 outline-0"
                     />
+                    {inputErrors && (
+                      <p className="text-[10px] mt-1 italic font-bold text-red-700">
+                        {inputErrors.phoneNumber}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -201,6 +243,11 @@ const CheckoutPage = () => {
                     placeholder="1137 Williams Avenue"
                     className="h-[56px] rounded-[8px] w-full pl-3 font-bold text-[14px] text-black/80 border border-gray-200 outline-0"
                   />
+                  {inputErrors && (
+                    <p className="text-[10px] mt-1 italic font-bold text-red-700">
+                      {inputErrors.address}
+                    </p>
+                  )}
                 </div>
                 <div className="md:grid md:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-2 mt-3">
@@ -219,6 +266,11 @@ const CheckoutPage = () => {
                       placeholder="10001"
                       className="h-[56px] rounded-[8px] w-full pl-3 font-bold text-[14px] text-black/80 border border-gray-200 outline-0"
                     />
+                    {inputErrors && (
+                      <p className="text-[10px] mt-1 italic font-bold text-red-700">
+                        {inputErrors.zipCode}
+                      </p>
+                    )}
                   </div>
                   <div className="flex flex-col gap-2 mt-3">
                     <label
@@ -236,6 +288,11 @@ const CheckoutPage = () => {
                       placeholder="New York"
                       className="h-[56px] rounded-[8px] w-full pl-3 font-bold text-[14px] text-black/80 border border-gray-200 outline-0"
                     />
+                    {inputErrors && (
+                      <p className="text-[10px] mt-1 italic font-bold text-red-700">
+                        {inputErrors.city}
+                      </p>
+                    )}
                   </div>
                   <div className="flex flex-col gap-2 mt-3">
                     <label
@@ -253,6 +310,11 @@ const CheckoutPage = () => {
                       placeholder="United States"
                       className="h-[56px] rounded-[8px] w-full pl-3 font-bold text-[14px] text-black/80 border border-gray-200 outline-0"
                     />
+                    {inputErrors && (
+                      <p className="text-[10px] mt-1 italic font-bold text-red-700">
+                        {inputErrors.country}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -317,6 +379,11 @@ const CheckoutPage = () => {
                             placeholder="238521993"
                             className="h-[56px] rounded-[8px] w-full pl-3 font-bold text-[14px] text-black/80 border border-gray-200 outline-0"
                           />
+                          {inputErrors && (
+                            <p className="text-[10px] mt-1 italic font-bold text-red-700">
+                              {inputErrors.eMoney}
+                            </p>
+                          )}
                         </div>
 
                         <div className="flex flex-col gap-2 mt-3">
@@ -335,6 +402,11 @@ const CheckoutPage = () => {
                             placeholder="6891"
                             className="h-[56px] rounded-[8px] w-full pl-3 font-bold text-[14px] text-black/80 border border-gray-200 outline-0"
                           />
+                          {inputErrors && (
+                            <p className="text-[10px] mt-1 italic font-bold text-red-700">
+                              {inputErrors.eMoneyPin}
+                            </p>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -375,13 +447,10 @@ const CheckoutPage = () => {
                       </div>
                     </div>
                     <div className="flex font-bold text-sm py-4 items-center justify-evenly gap-4   ">
-                     
                       <div className="">X{count[cartItem.id] || 1}</div>
-                      
                     </div>
                   </div>
                 ))}
-                
               </div>
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between">
