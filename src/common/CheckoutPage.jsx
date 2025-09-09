@@ -504,10 +504,10 @@ const CheckoutPage = () => {
                         </p>
                       </div>
                       <div className="text-red-500 font-bold capitalize italic flex-col mt-3 flex items-center justify-center">
-                        <div className="flex w-full rounded-t-lg bg-gray-200 py-8 px-4">
+                        <div className="flex w-full flex-col gap-4 rounded-t-lg h-[300px] overflow-y-auto bg-gray-200 py-8 px-4">
                           {cartItems.map((cartItem) => (
                             <div
-                              className="flex items-center justify-between w-full gap-2"
+                              className="flex items-center  justify-between w-full gap-2"
                               key={cartItem.id}
                             >
                               <div className="flex gap-2">
@@ -518,7 +518,7 @@ const CheckoutPage = () => {
                                     className=" h-[40px] rounded "
                                   />
                                 </div>
-                                <div className="flex flex-col items-start justify-start gap-[2px]  overflow-x-auto">
+                                <div className="flex flex-col items-start justify-start gap-[2px] w-[80px] md:w-[300px] overflow-x-auto">
                                   <h2 className="text-[15px] font-bold whitespace-nowrap ">
                                     {cartItem.title}
                                   </h2>
