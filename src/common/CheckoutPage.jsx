@@ -504,7 +504,7 @@ const CheckoutPage = () => {
                         </p>
                       </div>
                       <div className="text-red-500 font-bold capitalize italic flex-col mt-3 flex items-center justify-center">
-                        <div className="flex w-full flex-col gap-4 rounded-t-lg h-[300px] overflow-y-auto bg-gray-200 py-8 px-4">
+                        <div className="flex w-full flex-col gap-4 rounded-t-lg h-[200px] overflow-y-auto bg-gray-200 py-8 px-4">
                           {cartItems.map((cartItem) => (
                             <div
                               className="flex items-center  justify-between w-full gap-2"
@@ -535,7 +535,7 @@ const CheckoutPage = () => {
                             </div>
                           ))}
                         </div>
-                        <div className="flex items-start gap-4 flex-col px-4 py-8 w-full rounded-b-lg bg-black">
+                        <div className="flex items-start gap-4 flex-col px-4 py-6 w-full rounded-b-lg bg-black">
                           <p className="text-[15px] uppercase text-white ">
                             GRAND TOTAL
                           </p>
