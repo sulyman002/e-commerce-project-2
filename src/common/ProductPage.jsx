@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import LikelyProduct from "./LikelyProduct";
 import { setItem, getItem } from "../utils/useLocalStoragepersist.js";
+import { toast } from "sonner";
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -59,6 +60,10 @@ const ProductPage = () => {
   }, [id]);
 
   function handleAddToCartClicked(product) {
+      setTimeout(() => {
+      toast.success("Product added to cart")
+    }, 1000);
+ 
     setNewArray((prevData) => {
       const exists = prevData.find((item) => item.id === product.id);
       console.log(exists);

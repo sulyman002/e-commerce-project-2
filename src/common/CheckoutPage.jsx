@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import SellProductBtn from "../components/SellProductBtn";
 import success_mark from "../assets/desktop_home/success_mark.svg";
 import { getItem, setItem } from "../utils/useLocalStoragepersist";
+import { toast } from "sonner";
 
 const CheckoutPage = () => {
   const [updateInputs, setUpdateInput] = useState({
@@ -30,14 +31,30 @@ const CheckoutPage = () => {
 
   const [payment, setPayment] = useState(false);
 
-  // const [count, setCount] = useState(() => {
-  //   const storedCount = getItem("count");
-  //   return storedCount ? storedCount : {};
-  // });
+  const [inputErrors, setInputErrors] = useState({});
 
-  // useEffect(() => {
-  //   setItem("count", count);
-  // }, [count]);
+  function handleInputErrors () {
+    let isError = {}
+    if(updateInputs.name.length === 0) {
+      
+      isError.name = "This field is required"
+      
+    } 
+
+  }
+
+  function handlePayment() {
+    if(updateInputs.names && updateInputs.email && updateInputs.phoneNumber && updateInputs.address && updateInputs.zipCode && updateInputs.city && updateInputs.country ){
+      toast.error("This field is required")
+    } else{
+    setPayment(!payment);
+    }
+    
+    console.log("you clicked on the payment button");
+    return isError
+  }
+
+
 
 
     const [count, setCount] = useState(() => {
@@ -50,10 +67,7 @@ const CheckoutPage = () => {
     }, [count]);
   
     
-  function handlePayment() {
-    setPayment(!payment);
-    console.log("you clicked on the payment button");
-  }
+  
 
   const navigate = useNavigate();
 
@@ -367,37 +381,7 @@ const CheckoutPage = () => {
                     </div>
                   </div>
                 ))}
-                {/* {cartItems.length === 0 ? (
-                  <div className="flex text-black flex-col gap-4 mt-3 h-1/2 overflow-y-auto bg-gray-200 py-3 px-3 mx-6 rounded-md">
-                    <p className="text-red-500 font-bold text-1xl italic flex items-center justify-center h-full w-full text-center ">
-                      No items yet
-                    </p>
-                  </div>
-                ) : (
-                  cartItems.map((cartItem) => (
-                    <div className="flex items-center justify-between">
-                      <div className="flex gap-2">
-                        <div className="h-[64px] w-[64px] bg-[#F1F1F1] rounded flex items-center justify-center ">
-                          <img
-                            src={cartItem?.image}
-                            alt=""
-                            className=" h-[40px] rounded "
-                          />
-                        </div>
-                        <div className="flex flex-col items-start justify-start gap-[2px] w-[76px] md:w-[180px] overflow-x-auto">
-                          <h2 className="text-[15px] font-bold whitespace-nowrap ">
-                            {cartItem?.title}
-                          </h2>
-                          <p className="text-sm font-bold text-black/50 ">
-                            $ {cartItem?.price}
-                          </p>
-                        </div>
-                      </div>
-
-                      <p className="text-sm font-bold text-black/50 ">X{count[cartItem.id] || 1}</p>
-                    </div>
-                  ))
-                )} */}
+                
               </div>
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between">
