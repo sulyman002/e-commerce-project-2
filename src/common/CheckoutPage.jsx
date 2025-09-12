@@ -426,7 +426,7 @@ const CheckoutPage = () => {
               <div className="w-full flex flex-col gap-3 overflow-y-auto">
                 {/* here, we going to use .map() method to display 
               the data we get from the cart as summary, but for now, 
-              let work with random data i will just fetch a random data for now */}
+              let work with random data i will just fetch a random data for now , will check*/}
 
                 {cartItems.map((cartItem) => (
                   <div

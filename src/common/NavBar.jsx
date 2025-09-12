@@ -75,7 +75,7 @@ const NavBar = () => {
         if(storedItems) {
           setCartItems(storedItems);
         }
-      }, [])
+      }, [cartItems])
 
   return (
     <div className="bg-[#101010] text-white ">
